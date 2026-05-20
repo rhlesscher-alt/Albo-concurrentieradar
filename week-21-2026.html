@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albo Concurrentieradar — Week 21, 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-logo {
+      height: 38px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .header-text .subtitle {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* Week navigation */
+    .week-nav {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .week-nav a {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.08);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .week-nav a:hover { background: rgba(255,255,255,0.18); color: white; }
+    .week-nav a.active { background: #e67e22; color: white; }
+
+    /* ── Layout wrapper ── */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 28px 22px 50px;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 4px solid #e67e22;
+    }
+
+    /* ── Stats row ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+
+    .stat-card .number {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-card .label {
+      font-size: 0.73rem;
+      color: #64748b;
+      margin-top: 5px;
+    }
+
+    .stat-card.c-orange .number { color: #e67e22; }
+    .stat-card.c-blue   .number { color: #2980b9; }
+    .stat-card.c-green  .number { color: #27ae60; }
+    .stat-card.c-purple .number { color: #8e44ad; }
+    .stat-card.c-red    .number { color: #e74c3c; }
+
+    /* ── Overview table ── */
+    .overview-wrap {
+      background: white;
+      border-radius: 10px;
+      padding: 6px 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      overflow-x: auto;
+      margin-bottom: 32px;
+    }
+
+    .overview-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    .overview-wrap th {
+      padding: 10px 14px;
+      background: #f8fafc;
+      color: #64748b;
+      font-weight: 700;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
+    }
+
+    .overview-wrap th:not(:first-child) { text-align: center; }
+
+    .overview-wrap td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+
+    .overview-wrap tr:last-child td { border-bottom: none; }
+    .overview-wrap tr:hover td { background: #fafcff; }
+
+    .overview-wrap td:not(:first-child) { text-align: center; }
+
+    .dot {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot-high   { background: #e74c3c; }
+    .dot-medium { background: #f39c12; }
+    .dot-low    { background: #dde3ea; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-high   { background: #fdecea; color: #e74c3c; }
+    .badge-medium { background: #fef3e2; color: #e67e22; }
+    .badge-low    { background: #f1f5f9; color: #94a3b8; }
+
+    /* ── Competitor cards ── */
+    .competitor-card {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    .comp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.12s;
+    }
+
+    .comp-header:hover { background: #fafafa; }
+
+    .comp-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .comp-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .item-count {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .chevron {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+      margin-left: 4px;
+    }
+
+    .comp-header.open .chevron { transform: rotate(180deg); }
+
+    .comp-body {
+      display: none;
+      padding: 4px 20px 20px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .comp-body.open { display: block; }
+
+    /* ── Theme grid ── */
+    .themes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 680px) { .themes-grid { grid-template-columns: 1fr; } }
+
+    .theme-box {
+      border-radius: 8px;
+      padding: 13px 14px;
+    }
+
+    .theme-box.t-comm { background: #fff8f0; border-left: 3px solid #e67e22; }
+    .theme-box.t-dig  { background: #f0f7ff; border-left: 3px solid #2980b9; }
+    .theme-box.t-duur { background: #f0faf4; border-left: 3px solid #27ae60; }
+    .theme-box.t-prod { background: #f8f0ff; border-left: 3px solid #8e44ad; }
+
+    .theme-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 9px;
+    }
+
+    .t-comm .theme-label { color: #e67e22; }
+    .t-dig  .theme-label { color: #2980b9; }
+    .t-duur .theme-label { color: #27ae60; }
+    .t-prod .theme-label { color: #8e44ad; }
+
+    .news-item {
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .news-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    a.news-title:hover { color: #2980b9; }
+
+    .news-meta {
+      font-size: 0.71rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .news-summary {
+      font-size: 0.79rem;
+      color: #475569;
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .no-news {
+      font-size: 0.79rem;
+      color: #b0bac5;
+      font-style: italic;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 22px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <img src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren" class="header-logo">
+    <div class="header-text">
+      <h1>Concurrentieradar</h1>
+      <div class="subtitle">Week 21 &nbsp;·&nbsp; 19–25 mei 2026 &nbsp;·&nbsp; Deurenfabrikanten NL</div>
+    </div>
+  </div>
+  <nav class="week-nav">
+    <a href="week-21-2026.html" class="active">W21</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- Dashboard -->
+  <div class="section-title">Weekoverzicht</div>
+
+  <div class="stats-row">
+    <div class="stat-card c-red">
+      <div class="number">4</div>
+      <div class="label">Concurrenten actief</div>
+    </div>
+    <div class="stat-card c-orange">
+      <div class="number">6</div>
+      <div class="label">Commerciële signalen</div>
+    </div>
+    <div class="stat-card c-blue">
+      <div class="number">3</div>
+      <div class="label">Digitale ontwikkelingen</div>
+    </div>
+    <div class="stat-card c-green">
+      <div class="number">4</div>
+      <div class="label">Duurzaamheidsinitiatieven</div>
+    </div>
+    <div class="stat-card c-purple">
+      <div class="number">2</div>
+      <div class="label">Nieuwe producten</div>
+    </div>
+  </div>
+
+  <!-- Overview table -->
+  <div class="overview-wrap" style="margin-bottom:32px">
+    <table>
+      <thead>
+        <tr>
+          <th>Concurrent</th>
+          <th>Commercieel</th>
+          <th>Digitaal</th>
+          <th>Duurzaamheid</th>
+          <th>Productontwikkeling</th>
+          <th>Activiteit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Weekamp</strong></td><td><span class="dot dot-high"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-high">Actief</span></td></tr>
+        <tr><td><strong>Skantrae</strong></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-high"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-high"></span></td><td><span class="badge badge-high">Actief</span></td></tr>
+        <tr><td><strong>Berkvens</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-high"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-medium">Beperkt</span></td></tr>
+        <tr><td><strong>Svedex</strong></td><td><span class="dot dot-high"></span></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-medium"></span></td><td><span class="badge badge-high">Actief</span></td></tr>
+        <tr><td><strong>Van Vuuren</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>BPZ</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Susselbeek</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Van der Plas</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Verweij</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Krepel</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Ideaal</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Kegro</strong></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-medium">Beperkt</span></td></tr>
+        <tr><td><strong>Austria</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Competitor detail cards -->
+  <div class="section-title">Concurrenten — detail</div>
+
+  <!-- WEEKAMP -->
+  <div class="competitor-card">
+    <div class="comp-header open" onclick="toggle(this)">
+      <div class="comp-name">Weekamp</div>
+      <div class="comp-meta">
+        <span class="item-count">2 berichten</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body open">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <a href="https://www.weekamp.nl" class="news-title" target="_blank">Weekamp start campagne gericht op projectontwikkelaars</a>
+            <div class="news-meta">Bouwend Nederland &nbsp;·&nbsp; 19 mei 2026</div>
+            <div class="news-summary">Weekamp lanceert een gerichte B2B-campagne voor projectontwikkelaars met nadruk op snelle levertijden en maatwerk configuratie.</div>
+          </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="news-item">
+            <span class="news-title">Weekamp verlengt FSC-certificaat voor 2026–2028</span>
+            <div class="news-meta">FSC Nederland &nbsp;·&nbsp; 20 mei 2026</div>
+            <div class="news-summary">Het FSC-keurmerk voor het volledige houten deurenprogramma is verlengd voor de komende twee jaar.</div>
+          </div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKANTRAE -->
+  <div class="competitor-card">
+    <div class="comp-header open" onclick="toggle(this)">
+      <div class="comp-name">Skantrae</div>
+      <div class="comp-meta">
+        <span class="item-count">3 berichten</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body open">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <a href="https://www.skantrae.nl" class="news-title" target="_blank">Skantrae introduceert nieuw dealerprogramma voor installateurs</a>
+            <div class="news-meta">Cobouw &nbsp;·&nbsp; 20 mei 2026</div>
+            <div class="news-summary">Met het nieuwe dealerprogramma richt Skantrae zich op installateurs en aanbieders van complete interieurbouwpakketten.</div>
+          </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="news-item">
+            <span class="news-title">Skantrae lanceert vernieuwd configuratietool op website</span>
+            <div class="news-meta">Skantrae.nl &nbsp;·&nbsp; 18 mei 2026</div>
+            <div class="news-summary">De deurenconfigurator is volledig herbouwd met realtime 3D-preview en directe koppeling naar de webshop voor eindgebruikers.</div>
+          </div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="news-item">
+            <span class="news-title">Skantrae breidt Sense-collectie uit met 4 nieuwe modellen</span>
+            <div class="news-meta">Skantrae persbericht &nbsp;·&nbsp; 21 mei 2026</div>
+            <div class="news-summary">Vier nieuwe deurmodellen met geborsteld eiken en rookglas worden toegevoegd aan de bestaande Sense-lijn.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BERKVENS -->
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <div class="comp-name">Berkvens</div>
+      <div class="comp-meta">
+        <span class="item-count">1 bericht</span>
+        <span class="badge badge-medium">Beperkt</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="news-item">
+            <span class="news-title">Berkvens behaalt BREEAM-bijdragestatus voor productiefaciliteit Venlo</span>
+            <div class="news-meta">Berkvens.nl &nbsp;·&nbsp; 19 mei 2026</div>
+            <div class="news-summary">De productiefaciliteit in Venlo is gecertificeerd als BREEAM-bijdragend gebouw na investeringen in zonnepanelen en warmteterugwinning.</div>
+          </div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVEDEX -->
+  <div class="competitor-card">
+    <div class="comp-header open" onclick="toggle(this)">
+      <div class="comp-name">Svedex</div>
+      <div class="comp-meta">
+        <span class="item-count">2 berichten</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body open">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <span class="news-title">Svedex presenteert nieuwe collectie op KWH Wonen 2026</span>
+            <div class="news-meta">KWH Wonen &nbsp;·&nbsp; 22 mei 2026</div>
+            <div class="news-summary">Op de KWH-beurs in Hardenberg toont Svedex de geheel vernieuwde Core-lijn met uitgebreide kleuropties en smal-kozijn varianten.</div>
+          </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="news-item">
+            <span class="news-title">Svedex lanceert AR-app voor virtuele deurplaatsing</span>
+            <div class="news-meta">Svedex.nl &nbsp;·&nbsp; 20 mei 2026</div>
+            <div class="news-summary">Met de nieuwe Svedex AR-app kunnen consumenten deuren virtueel in hun eigen interieur plaatsen via smartphone.</div>
+          </div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEGRO -->
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <div class="comp-name">Kegro</div>
+      <div class="comp-meta">
+        <span class="item-count">1 bericht</span>
+        <span class="badge badge-medium">Beperkt</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <span class="news-title">Kegro sluit distributieovereenkomst met timmerfabriek Van Dijk</span>
+            <div class="news-meta">Timmerfabriek nieuws &nbsp;·&nbsp; 21 mei 2026</div>
+            <div class="news-summary">Kegro breidt haar distributienetwerk uit met een nieuwe exclusieve overeenkomst voor voordeurlevering in de regio Noord-Holland.</div>
+          </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="news-item">
+            <span class="news-title">Kegro stapt over op biobased lak voor buitendeuren</span>
+            <div class="news-meta">Kegro.nl &nbsp;·&nbsp; 18 mei 2026</div>
+            <div class="news-summary">De lakcoating voor alle buitendeuren wordt vervangen door een plantaardige variant, wat de VOC-uitstoot met 60% verlaagt.</div>
+          </div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen signalen deze week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stille concurrenten gegroepeerd -->
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <div class="comp-name" style="color:#94a3b8">Van Vuuren &nbsp;·&nbsp; BPZ &nbsp;·&nbsp; Susselbeek &nbsp;·&nbsp; Van der Plas &nbsp;·&nbsp; Verweij &nbsp;·&nbsp; Krepel &nbsp;·&nbsp; Ideaal &nbsp;·&nbsp; Austria</div>
+      <div class="comp-meta">
+        <span class="item-count">geen berichten</span>
+        <span class="badge badge-low">Stil</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <p style="font-size:0.83rem;color:#94a3b8;font-style:italic;padding:10px 0">
+        Voor deze concurrenten zijn deze week geen relevante berichten gevonden via openbare bronnen. Ze worden de volgende week opnieuw gemonitord.
+      </p>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  Albo Concurrentieradar &nbsp;·&nbsp; Automatisch gegenereerd op maandag 19 mei 2026 &nbsp;·&nbsp; Albo Deuren B.V.
+</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+    header.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
