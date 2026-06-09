@@ -1,86 +1,84 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Albo Concurrentieradar — Terugblik 2026 (week 1–20)</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; color: #1a1a2e; }
-header { background: #1a1a2e; color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,0.35); }
-.header-left { display: flex; align-items: center; gap: 16px; }
-.header-logo { height: 38px; width: auto; filter: brightness(0) invert(1); }
-.header-text h1 { font-size: 1.3rem; font-weight: 800; }
-.header-text .subtitle { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
-.week-nav { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-.week-nav a { padding: 5px 11px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; color: #94a3b8; background: rgba(255,255,255,0.08); }
-.week-nav a:hover { background: rgba(255,255,255,0.18); color: white; }
-.week-nav a.active { background: #7c3aed; color: white; }
-.week-nav a.hist { background: rgba(124,58,237,0.25); color: #c4b5fd; }
-.container { max-width: 1260px; margin: 0 auto; padding: 28px 22px 50px; }
-.intro-banner { background: linear-gradient(135deg,#7c3aed,#5b21b6); color: white; border-radius: 12px; padding: 18px 24px; margin-bottom: 24px; }
-.intro-banner h2 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
-.intro-banner p { font-size: 0.82rem; opacity: 0.85; }
-.section-title { font-size: 1rem; font-weight: 700; margin-bottom: 14px; padding-left: 12px; border-left: 4px solid #7c3aed; }
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-bottom: 22px; }
-.stat-card { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
-.stat-card .number { font-size: 2.1rem; font-weight: 800; line-height: 1; }
-.stat-card .label { font-size: 0.73rem; color: #64748b; margin-top: 5px; }
-.c-purple .number{color:#7c3aed} .c-orange .number{color:#e67e22} .c-blue .number{color:#2980b9} .c-green .number{color:#27ae60} .c-red .number{color:#e74c3c}
-.overview-wrap { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
-.overview-wrap table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-.overview-wrap th { padding: 10px 14px; background: #f8fafc; color: #64748b; font-weight: 700; border-bottom: 1px solid #e2e8f0; }
-.overview-wrap th:not(:first-child) { text-align: center; }
-.overview-wrap td { padding: 9px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
-.overview-wrap td:not(:first-child) { text-align: center; }
-.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
-.dot-high{background:#e74c3c} .dot-medium{background:#f39c12} .dot-low{background:#dde3ea}
-.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
-.badge-high{background:#fdecea;color:#e74c3c} .badge-medium{background:#fef3e2;color:#e67e22} .badge-low{background:#f1f5f9;color:#94a3b8}
-.competitor-card { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); overflow: hidden; }
-.comp-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; cursor: pointer; user-select: none; transition: background 0.12s; }
-.comp-header:hover { background: #fafafa; }
-.comp-name { font-size: 1rem; font-weight: 700; }
-.comp-meta { display: flex; align-items: center; gap: 10px; }
-.item-count { font-size: 0.78rem; color: #94a3b8; }
-.chevron { font-size: 0.85rem; color: #94a3b8; transition: transform 0.2s; }
-.comp-header.open .chevron { transform: rotate(180deg); }
-.comp-body { display: none; padding: 4px 20px 20px; border-top: 1px solid #f1f5f9; }
-.comp-body.open { display: block; }
-.themes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-@media(max-width:680px){.themes-grid{grid-template-columns:1fr}}
-.theme-box { border-radius: 8px; padding: 13px 14px; }
-.t-comm{background:#fff8f0;border-left:3px solid #e67e22}
-.t-dig{background:#f0f7ff;border-left:3px solid #2980b9}
-.t-duur{background:#f0faf4;border-left:3px solid #27ae60}
-.t-prod{background:#f8f0ff;border-left:3px solid #8e44ad}
-.theme-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 9px; }
-.t-comm .theme-label{color:#e67e22} .t-dig .theme-label{color:#2980b9} .t-duur .theme-label{color:#27ae60} .t-prod .theme-label{color:#8e44ad}
-.news-item { padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.news-item:last-child { border-bottom: none; }
-.news-title { font-size: 0.82rem; font-weight: 600; color: #1a1a2e; text-decoration: none; line-height: 1.35; }
-a.news-title:hover{color:#2980b9}
-.news-meta { font-size: 0.71rem; color: #94a3b8; margin-top: 2px; }
-.news-summary { font-size: 0.79rem; color: #475569; margin-top: 4px; line-height: 1.45; }
-.no-news { font-size: 0.79rem; color: #b0bac5; font-style: italic; }
-footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 20px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albo Concurrentieradar — Terugblik 1 jan – 18 mei 2026 (week 1–20)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; color: #1a1a2e; }
+    header { background: #1a1a2e; color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,0.35); }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .header-logo { height: 38px; width: auto; filter: brightness(0) invert(1); }
+    .header-text h1 { font-size: 1.3rem; font-weight: 800; }
+    .header-text .subtitle { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+    .week-nav { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .week-nav a { padding: 5px 11px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; color: #94a3b8; background: rgba(255,255,255,0.08); }
+    .week-nav a:hover { background: rgba(255,255,255,0.18); color: white; }
+    .week-nav a.active { background: #7c3aed; color: white; }
+    .week-nav a.hist { background: rgba(124,58,237,0.25); color: #c4b5fd; }
+    .container { max-width: 1260px; margin: 0 auto; padding: 28px 22px 50px; }
+    .intro-banner { background: linear-gradient(135deg,#7c3aed,#5b21b6); color: white; border-radius: 12px; padding: 18px 24px; margin-bottom: 24px; }
+    .intro-banner h2 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+    .intro-banner p { font-size: 0.82rem; opacity: 0.85; }
+    .section-title { font-size: 1rem; font-weight: 700; margin-bottom: 14px; padding-left: 12px; border-left: 4px solid #7c3aed; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-bottom: 22px; }
+    .stat-card { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .stat-card .number { font-size: 2.1rem; font-weight: 800; line-height: 1; }
+    .stat-card .label { font-size: 0.73rem; color: #64748b; margin-top: 5px; }
+    .c-purple .number{color:#7c3aed} .c-orange .number{color:#e67e22} .c-blue .number{color:#2980b9} .c-green .number{color:#27ae60} .c-red .number{color:#e74c3c}
+    .overview-wrap { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .overview-wrap table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .overview-wrap th { padding: 10px 14px; background: #f8fafc; color: #64748b; font-weight: 700; border-bottom: 1px solid #e2e8f0; }
+    .overview-wrap th:not(:first-child) { text-align: center; }
+    .overview-wrap td { padding: 9px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    .overview-wrap td:not(:first-child) { text-align: center; }
+    .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+    .dot-high{background:#e74c3c} .dot-medium{background:#f39c12} .dot-low{background:#dde3ea}
+    .badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+    .badge-high{background:#fdecea;color:#e74c3c} .badge-medium{background:#fef3e2;color:#e67e22} .badge-low{background:#f1f5f9;color:#94a3b8}
+    .competitor-card { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); overflow: hidden; }
+    .comp-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; cursor: pointer; user-select: none; transition: background 0.12s; }
+    .comp-header:hover { background: #fafafa; }
+    .comp-name { font-size: 1rem; font-weight: 700; }
+    .comp-meta { display: flex; align-items: center; gap: 10px; }
+    .item-count { font-size: 0.78rem; color: #94a3b8; }
+    .chevron { font-size: 0.85rem; color: #94a3b8; transition: transform 0.2s; }
+    .comp-header.open .chevron { transform: rotate(180deg); }
+    .comp-body { display: none; padding: 4px 20px 20px; border-top: 1px solid #f1f5f9; }
+    .comp-body.open { display: block; }
+    .themes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    @media(max-width:680px){.themes-grid{grid-template-columns:1fr}}
+    .theme-box { border-radius: 8px; padding: 13px 14px; }
+    .t-comm{background:#fff8f0;border-left:3px solid #e67e22}
+    .t-dig{background:#f0f7ff;border-left:3px solid #2980b9}
+    .t-duur{background:#f0faf4;border-left:3px solid #27ae60}
+    .t-prod{background:#f8f0ff;border-left:3px solid #8e44ad}
+    .theme-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 9px; }
+    .t-comm .theme-label{color:#e67e22} .t-dig .theme-label{color:#2980b9} .t-duur .theme-label{color:#27ae60} .t-prod .theme-label{color:#8e44ad}
+    .news-item { padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .news-item:last-child { border-bottom: none; }
+    .news-title { font-size: 0.82rem; font-weight: 600; color: #1a1a2e; text-decoration: none; line-height: 1.35; }
+    a.news-title:hover{color:#2980b9}
+    .news-meta { font-size: 0.71rem; color: #94a3b8; margin-top: 2px; }
+    .news-summary { font-size: 0.79rem; color: #475569; margin-top: 4px; line-height: 1.45; }
+    .no-news { font-size: 0.79rem; color: #b0bac5; font-style: italic; }
+    footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 20px; }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="header-left">
-    <img src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren" class="header-logo">
+    <img class="header-logo" src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren">
     <div class="header-text">
       <h1>Concurrentieradar</h1>
-      <div class="subtitle">Rest jaar &middot; 1 jan &ndash; 18 mei 2026 (week 1&ndash;20) &middot; Deurenfabrikanten NL</div>
+      <div class="subtitle">Rest jaar · 1 jan – 18 mei 2026 (week 1–20) · Deurenfabrikanten NL</div>
     </div>
   </div>
   <nav class="week-nav">
     <a href="historisch-2026.html" class="active">Rest jaar</a>
+    <a href="week-23-2026.html">W23</a>
     <a href="week-22-2026.html">W22</a>
     <a href="week-21-2026.html">W21</a>
   </nav>
@@ -89,19 +87,18 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 <div class="container">
 
   <div class="intro-banner">
-    <h2>&#128202; Terugblik 2026 &mdash; Alle concurrentieactiviteiten week 1&ndash;20</h2>
-    <p>Alle concurrentieactiviteiten van 1 januari t/m 18 mei 2026 (week 1&ndash;20). 13 deurenfabrikanten gemonitord op commercieel, digitaal, duurzaamheid en productontwikkeling.</p>
+    <h2>Terugblik 2026 — Week 1 t/m 20</h2>
+    <p>Alle concurrentieactiviteiten van 1 januari t/m 18 mei 2026 · 13 deurenfabrikanten gemonitord · Categorieën: Commercieel, Digitaal, Duurzaamheid, Productontwikkeling</p>
   </div>
 
-  <div class="section-title">Totaaloverzicht periode</div>
-
+  <!-- Stats -->
   <div class="stats-row">
     <div class="stat-card c-purple">
-      <div class="number">35</div>
-      <div class="label">Totaal berichten</div>
+      <div class="number">30</div>
+      <div class="label">Totaal berichten (week 1–20)</div>
     </div>
     <div class="stat-card c-orange">
-      <div class="number">8</div>
+      <div class="number">6</div>
       <div class="label">Commercieel</div>
     </div>
     <div class="stat-card c-blue">
@@ -109,171 +106,194 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
       <div class="label">Digitaal</div>
     </div>
     <div class="stat-card c-green">
-      <div class="number">7</div>
+      <div class="number">8</div>
       <div class="label">Duurzaamheid</div>
     </div>
     <div class="stat-card c-red">
-      <div class="number">20</div>
+      <div class="number">16</div>
       <div class="label">Productontwikkeling</div>
     </div>
   </div>
 
-  <div class="section-title">Concurrentenoverzicht</div>
-
+  <!-- Overzichtstabel -->
+  <div class="section-title">Overzicht alle concurrenten — week 1–20 2026</div>
   <div class="overview-wrap">
     <table>
       <thead>
         <tr>
           <th>Concurrent</th>
+          <th>Activiteit</th>
           <th>Commercieel</th>
           <th>Digitaal</th>
           <th>Duurzaamheid</th>
           <th>Productontwikkeling</th>
-          <th>Activiteit</th>
+          <th>Berichten</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Weekamp</strong></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-high"></span></td>
+          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
         <tr>
           <td><strong>Skantrae</strong></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-high"></span></td>
-          <td><span class="badge badge-high">Hoog</span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-high"></span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
         <tr>
           <td><strong>Berkvens</strong></td>
+          <td><span class="dot dot-high"></span></td>
           <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-high"></span></td>
-          <td><span class="dot dot-medium"></span></td>
-          <td><span class="badge badge-high">Hoog</span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
         <tr>
           <td><strong>Svedex</strong></td>
+          <td><span class="dot dot-high"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-medium"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="dot dot-high"></span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
         <tr>
           <td><strong>Van Vuuren</strong></td>
           <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-medium"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-medium">2</span></td>
         </tr>
         <tr>
           <td><strong>BPZ</strong></td>
-          <td><span class="dot dot-high"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-medium">2</span></td>
         </tr>
         <tr>
-          <td><strong>Susselbeek</strong></td>
+          <td><strong>Suselbeek</strong></td>
+          <td><span class="dot dot-high"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-high"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-high">4</span></td>
         </tr>
         <tr>
           <td><strong>Van der Plas</strong></td>
           <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="badge badge-low">Laag</span></td>
+          <td><span class="badge badge-low">1</span></td>
         </tr>
         <tr>
           <td><strong>Verweij</strong></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-high"></span></td>
           <td><span class="dot dot-medium"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="badge badge-medium">2</span></td>
         </tr>
         <tr>
           <td><strong>Krepel</strong></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="badge badge-low">Laag</span></td>
+          <td><span class="badge badge-low">1</span></td>
         </tr>
         <tr>
           <td><strong>Ideaal</strong></td>
-          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-medium"></span></td>
-          <td><span class="badge badge-low">Laag</span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="badge badge-low">0</span></td>
         </tr>
         <tr>
           <td><strong>Kegro</strong></td>
-          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-high"></span></td>
+          <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-high"></span></td>
-          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
         <tr>
-          <td><strong>Austria T&uuml;ren</strong></td>
+          <td><strong>Austria Türen</strong></td>
           <td><span class="dot dot-high"></span></td>
+          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-high"></span></td>
-          <td><span class="badge badge-high">Hoog</span></td>
+          <td><span class="badge badge-high">3</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section-title">Details per concurrent</div>
+  <!-- Concurrent cards -->
+  <div class="section-title">Detailberichten per concurrent</div>
 
   <!-- WEEKAMP -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Weekamp Deuren</span>
+      <div class="comp-name">Weekamp Deuren</div>
       <div class="comp-meta">
-        <span class="item-count">1 bericht</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · jan – apr 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="news-item">
+            <div class="news-title">Nieuwe prijzenboeken 2026 gepubliceerd</div>
+            <div class="news-meta">Januari 2026 · weekampdeuren.nl</div>
+            <div class="news-summary">Weekamp publiceert vernieuwde prijzenboeken voor 2026 waarbij binnen- en buitendeuren voor het eerst ieder een eigen prijzenboek krijgen. Logisch opgebouwd, afgestemd op verschillende woonstijlen en op gebruiksgemak gericht.</div>
+          </div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.duurzaam-ondernemen.nl/weekamp-deuren-en-reestmond-versnellen-circulaire-deurrecycling-en-verlengen-samenwerking/" target="_blank">Weekamp &amp; Reestmond versnellen circulaire deurrecycling</a>
-            <div class="news-meta">14 april 2026 &mdash; Duurzaam Ondernemen</div>
-            <div class="news-summary">Vanaf 14 april 2026 belooft Weekamp bij elke nieuwe offerte gratis recycling van teruggegeven deuren. Teruggewonnen hout wordt verwerkt via vingerlas en lamineren tot grondstof voor de BioComfort deur &mdash; KOMO-gecertificeerd met FSC&reg; Recycled certificaat. Samenwerking met sociaal werkbedrijf Reestmond verlengd.</div>
+            <div class="news-title">Weekamp &amp; Reestmond versnellen circulaire deurrecycling</div>
+            <div class="news-meta">14 april 2026 · wonen360.nl / duurzaam-ondernemen.nl</div>
+            <div class="news-summary">Vanaf 14 april 2026 bevatten alle nieuwe Weekamp-offertes de belofte van gratis retourname en recycling van deuren. Samenwerking met sociaal werkbedrijf Reestmond (Havelte) wordt verlengd en opgeschaald. Herwonnen hout krijgt FSC® Recycled-certificaat en wordt verwerkt in de BioComfort-deur. Deuren zijn KOMO-gecertificeerd en komen met 6 jaar GND-garantie.</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="news-item">
+            <div class="news-title">Catalogus binnendeuren 2026 uitgebracht</div>
+            <div class="news-meta">Februari 2026 · weekampdeuren.nl</div>
+            <div class="news-summary">Nieuwe uitgebreide brochure binnendeuren 2026 gepubliceerd. Zeven series gepresenteerd – van modern industrieel (Loft-serie met glazen deuren) tot warm klassiek en landelijk. BioComfort-deur (deels gerecycled en biobased materiaal) prominent in nieuwe collectie.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -282,53 +302,42 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- SKANTRAE -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Skantrae</span>
+      <div class="comp-name">Skantrae</div>
       <div class="comp-meta">
-        <span class="item-count">5 berichten</span>
-        <span class="badge badge-high">Hoog</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · Q1–Q2 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke commerciële campagnes gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="news-item">
+            <div class="news-title">Deli Home (moedermaatschappij Skantrae) behaalt B Corp-certificering</div>
+            <div class="news-meta">2026 · deli-home.com</div>
+            <div class="news-summary">Deli Home, moederbedrijf van Skantrae, ontvangt de B Corp-certificering — een internationale erkenning voor bedrijven die hoge sociale en milieuprestaties aantonen. Skantrae-deuren zijn tevens FSC-gecertificeerd en 52 modellen dragen het KOMO-keurmerk (10 jaar garantie).</div>
+          </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.skantrae.com/binnendeuren/slimseries-one" target="_blank">SlimSeries One uitgebreid met staaluitstraling glazen deuren</a>
-            <div class="news-meta">2026 &mdash; Skantrae</div>
-            <div class="news-summary">Vernieuwd SlimSeries One met ronde roeden in drie populaire afwerkingen: Deep Black (RAL 9011), Pure White (RAL 9010) en Natural Oak. Zes nieuwe deurmodellen toegevoegd.</div>
+            <div class="news-title">SlimSeries XS gelanceerd — 30mm sponningbreedte</div>
+            <div class="news-meta">Q1 2026 · skantrae.com</div>
+            <div class="news-summary">Skantrae introduceert de SlimSeries XS: houten binnendeuren met een sponningbreedte van slechts 30mm — een primeur in de Nederlandse houtensector. Beschikbaar in Deep Black met glas, zowel als draai- als schuifdeur (vijf modellen totaal). Ziet eruit als staal, weegt als hout.</div>
           </div>
           <div class="news-item">
-            <a class="news-title" href="https://www.skantrae.com/inspiratie/slimseries" target="_blank">SlimSeries XS gelanceerd: 30mm sponningbreedte</a>
-            <div class="news-meta">2026 &mdash; Skantrae</div>
-            <div class="news-summary">Nieuwe houten binnendeuren met slechts 30mm kozijnbreedte. Stelt een nieuwe standaard in minimalistische deurdesigns voor de Nederlandse markt.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.skantrae.com/" target="_blank">Cove Three serie: breed klassiek profiel</a>
-            <div class="news-meta">2026 &mdash; Skantrae</div>
-            <div class="news-summary">Uitbreiding van het luxe assortiment met de Cove Three, een brede klassiek geprofileerde deur voor traditionele interieurs.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.skantrae.com/" target="_blank">Nano TopCoat EBC serie: 4 nieuwe kleuren</a>
-            <div class="news-meta">2026 &mdash; Skantrae</div>
-            <div class="news-summary">Uitbreiding van de krasbestendige Nano TopCoat EBC serie met vier stijlvolle nieuwe kleuren. Deuren zijn direct monteerklaar.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.skantrae.com/" target="_blank">Board serie: nieuw vlak model en gegroefd model</a>
-            <div class="news-meta">2026 &mdash; Skantrae</div>
-            <div class="news-summary">De Board serie is uitgebreid met een vlak model en gegroefd model, aansluitend bij de trend voor strakke interieurdeuren.</div>
+            <div class="news-title">SlimSeries uitgebreid: gekruist, verticaal, asymmetrisch en opdek</div>
+            <div class="news-meta">2026 · skantrae.com</div>
+            <div class="news-summary">De bestaande SlimSeries wordt uitgebreid met nieuwe uitvoeringen: gekruist, verticaal, asymmetrisch én in opdekvorm. Vijf nieuwe deurreeksen die passen bij diverse woonstijlen en standaard voorgelakt worden geleverd.</div>
           </div>
         </div>
       </div>
@@ -338,11 +347,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- BERKVENS -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Berkvens Deursystemen</span>
+      <div class="comp-name">Berkvens Deursystemen</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-high">Hoog</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · jan 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
@@ -350,30 +359,31 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a class="news-title" href="https://berkvens.nl/" target="_blank">Nieuwe pay-off: &ldquo;Access to tomorrow&rdquo;</a>
-            <div class="news-meta">2026 &mdash; Berkvens</div>
-            <div class="news-summary">Berkvens introduceert een nieuwe merkpositioning met de pay-off &ldquo;Access to tomorrow&rdquo;, gericht op duurzame innovatie en toekomstgerichte producten.</div>
+            <div class="news-title">Investering in zes nieuwe productielijnen aangekondigd</div>
+            <div class="news-meta">Januari 2026 · aannemervak.nl</div>
+            <div class="news-summary">Berkvens Deursystemen kondigt een investering aan in zes nieuwe productielijnen als onderdeel van hun verduurzamingsstrategie. De productielijnen worden afgestemd op de stijgende vraag naar biobased gecertificeerde deuren in de utiliteitsbouw.</div>
           </div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://info.berkvens.nl/over-ons/nieuws/berkvens-niaga-circulaire-deur" target="_blank">Berkvens Zero: eerste volledig circulaire binnendeur</a>
-            <div class="news-meta">2026 &mdash; Berkvens / Niaga&reg;</div>
-            <div class="news-summary">In samenwerking met Niaga&reg; (onderdeel Covestro) presenteert Berkvens de eerste volledig circulaire binnendeur. Dankzij een gepatenteerde &ldquo;click-unclick&rdquo; verbindingstechniek zijn alle componenten losmaakbaar en herbruikbaar. De deur wordt geleverd met een materialenpaspoort.</div>
+            <div class="news-title">Eerste NL binnendeurenfabrikant met biobased certificering (BRL7010)</div>
+            <div class="news-meta">15 januari 2026 · berkvens.nl / duurzaam-ondernemen.nl</div>
+            <div class="news-summary">Berkvens introduceert zich als eerste Nederlandse fabrikant van binnendeuren met een gecertificeerd biobased aandeel. Alle standaard binnendeuren scoren >80% biobased grondstoffen (hernieuwbaarheidsverklaring conform BRL7010). "Geen eindpunt, maar startpunt" — investering in verdere CO₂-impact verlaging.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title">98% FSC-gecertificeerd hout in gehele productie</div>
+            <div class="news-meta">2026 · berkvens.nl</div>
+            <div class="news-summary">Sinds introductie van FSC-hout in 2005 is het aandeel nu gestegen naar ca. 98% van al het ingekochte hout. Berkvens benadrukt continue investering in MKI- en CO₂-reductie over de gehele levenscyclus van het product.</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.timmerfabrikant.nl/houtbewerking/berkvens-investeert-versneld-in-automatisering/10837/" target="_blank">Berkvens versnelt automatisering na overname machinepark Reinaerdt</a>
-            <div class="news-meta">2026 &mdash; Timmerfabrikant</div>
-            <div class="news-summary">Het Somerense familiebedrijf (ca. 1 miljoen deuren per jaar) nam het complete machinepark over van de voormalige HPL-deurenmaker Reinaerdt en versnelt daarmee de eigen automatisering aanzienlijk.</div>
-          </div>
+          <div class="no-news">Geen specifieke productontwikkelingen gevonden buiten de biobased innovatie in periode jan–mei 2026.</div>
         </div>
       </div>
     </div>
@@ -382,38 +392,43 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- SVEDEX -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Svedex</span>
+      <div class="comp-name">Svedex</div>
       <div class="comp-meta">
-        <span class="item-count">2 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · Q1–Q2 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke campagnes of dealer-acties gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke duurzaamheidsberichten gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.svedex.nl/assortiment/" target="_blank">Diep Zwart collectie uitgebreid met nieuwe modellen</a>
-            <div class="news-meta">2026 &mdash; Svedex</div>
-            <div class="news-summary">Svedex breidt de succesvolle Diep Zwart collectie uit met nieuwe deurmodellen en series in de populaire donkere kleurstelling.</div>
+            <div class="news-title">Deep Black collectie uitgebreid — Nova Design, Front &amp; Cameo in zwart</div>
+            <div class="news-meta">2026 · svedex.nl</div>
+            <div class="news-summary">Svedex breidt de populaire Deep Black collectie uit: de Nova Design-serie krijgt zwarte lijndeuren naast de bestaande glasdeuren; ook de Front- en Cameo-series zijn voortaan volledig in diep zwart (ca. RAL9005) leverbaar via Superlak® afwerking — krasbestendig en kleurvast.</div>
           </div>
           <div class="news-item">
-            <a class="news-title" href="https://www.svedex.nl/nieuws" target="_blank">Nieuwe collectie &ldquo;Black on White&rdquo; gelanceerd</a>
-            <div class="news-meta">2026 &mdash; Svedex</div>
-            <div class="news-summary">Svedex introduceert de &ldquo;Black on White&rdquo; deurcollectie, aansluitend op de industriële interieurtrend. Alle deuren voorzien van Svedex superlak, hoogwaardig kras- en slijtvast lakwerk.</div>
+            <div class="news-title">Black on White — nieuwe contrastcollectie gelanceerd</div>
+            <div class="news-meta">2026 · svedex.nl</div>
+            <div class="news-summary">Svedex lanceert de "Black on White" collectie: wit gelakte stijldeuren gecombineerd met zwarte details (glasroeden, beslag, schuifdeursystemen). Drie nieuwe beslagsets geïntroduceerd: Voque, Live en Lounge — trendy zwarte deurkrukken die de witte collectie completeren.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title">Nieuwe schuifdeursystemen Move 4 &amp; Move 5 geïntroduceerd</div>
+            <div class="news-meta">2026 · svedex.nl</div>
+            <div class="news-summary">Twee nieuwe zwarte schuifdeursystemen — Move 4 en Move 5 — combineren stijlvol met alle gelakte stijldeuren uit de Svedex-collectie en completeren het zwart-wit verhaal. Onderdeel van de brede uitbreiding in zwarte hardware en schuifoplossingen.</div>
           </div>
         </div>
       </div>
@@ -423,11 +438,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- VAN VUUREN -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Van Vuuren Deuren</span>
+      <div class="comp-name">Van Vuuren Deuren</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">2 berichten · feb 2026</span>
+        <span class="badge badge-medium">Matig actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
@@ -435,30 +450,25 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a class="news-title" href="https://vanvuuren.nl/nieuws/" target="_blank">Vernieuwd GND-garantielabel op alle deuren</a>
-            <div class="news-meta">Februari 2026 &mdash; Van Vuuren</div>
-            <div class="news-summary">Vanaf februari 2026 worden alle Van Vuuren deuren geleverd met een vernieuwd GND-garantielabel dat de deurprestaties in één oogopslag zichtbaar maakt voor eindgebruikers en monteurs.</div>
+            <div class="news-title">Vernieuwd GND-garantielabel op alle deuren</div>
+            <div class="news-meta">Februari 2026 · vanvuuren.nl</div>
+            <div class="news-summary">Vanaf februari 2026 worden alle Van Vuuren-deuren voorzien van een vernieuwd GND-garantielabel. Het label maakt de functionele prestaties van de deur direct zichtbaar en wordt uitgebreid met het KOMO-certificaat. Van Vuuren is onderdeel van het GND-samenwerkingsverband van 11 toonaangevende Nederlandse houten deurenfabrikanten.</div>
           </div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke duurzaamheidsberichten gevonden in periode jan–mei 2026 (FSC/BREEAM/LEED/KOMO-certificeringen blijven van kracht).</div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://vanvuuren.nl/officieel-gecertificeerd-30-en-60-minuten-brand-en-rookwerende-wisseldeuren/" target="_blank">Brand- &amp; rookwerende wisseldeuren gecertificeerd (30 en 60 min.)</a>
-            <div class="news-meta">2026 &mdash; Van Vuuren / Alprokon</div>
-            <div class="news-summary">In samenwerking met Alprokon zijn de wisseldeuren van Van Vuuren volledig gecertificeerd voor zowel brandwering (30 en 60 min.) als rookwering (Sa en S200), geschikt voor beschermde vluchtroutes.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://vanvuuren.nl/?page_id=38" target="_blank">Nieuwe productielijn in ontwikkeling</a>
-            <div class="news-meta">2026 &mdash; Van Vuuren</div>
-            <div class="news-summary">Van Vuuren ontwikkelt een nieuwe productielijn waarvan componenten grondig worden getest om klantenwensen sneller en flexibeler te kunnen bedienen.</div>
+            <div class="news-title">30 &amp; 60 minuten brand- én rookwerende wisseldeuren officieel gecertificeerd</div>
+            <div class="news-meta">2026 · vanvuuren.nl</div>
+            <div class="news-summary">Van Vuuren behaalt officiële certificering voor wisseldeuren met 30 en 60 minuten brand- én rookwerendheid gecombineerd. Relevante toevoeging voor utiliteitsbouwprojecten met strenge brandveiligheidseisen — positie als utiliteitsspecialist wordt verder versterkt.</div>
           </div>
         </div>
       </div>
@@ -468,11 +478,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- BPZ -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">BPZ Deuren</span>
+      <div class="comp-name">BPZ Deurenspecialist</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">2 berichten · 2026</span>
+        <span class="badge badge-medium">Matig actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
@@ -480,77 +490,113 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a class="news-title" href="https://bpz.nl/projecten/" target="_blank">1.736 HPL-deuren voor ETZ-ziekenhuis Tilburg</a>
-            <div class="news-meta">2026 &mdash; BPZ</div>
-            <div class="news-summary">BPZ levert en monteert 1.736 HPL-deuren inclusief spiegels, scharnieren en sloten voor het Elisabeth-TweeSteden Ziekenhuis (ETZ) in Tilburg. Oplevering gepland einde 2026.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://bpz.nl/projecten/" target="_blank">579 Digimate deuren voor De Kop Handelskade Deventer</a>
-            <div class="news-meta">2026 &mdash; BPZ</div>
-            <div class="news-summary">BPZ levert en monteert 579 Digimate deuren inclusief beglazing en beslag voor de herontwikkeling van De Kop Handelskade in Deventer: voormalige kantoren worden getransformeerd naar woningen, studentenhuisvesting en kantoren.</div>
+            <div class="news-title">BPZ levert deuren voor ETZ-ziekenhuis Tilburg (oplevering eind 2026)</div>
+            <div class="news-meta">2026 · bpz.nl</div>
+            <div class="news-summary">BPZ is betrokken als deurenleverancier bij het Elisabeth-TweeSteden Ziekenhuis (ETZ) in Tilburg — een groot utiliteitsproject met oplevering gepland eind 2026. Het project vraagt om een moderne, duurzame en toekomstbestendige deurenoplossing in de zorgomgeving.</div>
           </div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://bpz.nl/actueel/alles-over-duurzame-deuren/" target="_blank">Circulaire deuren voor nieuw Kooi Stadion</a>
-            <div class="news-meta">2026 &mdash; BPZ</div>
-            <div class="news-summary">Directeur Matthijs Zomer van BPZ presenteert circulaire deuroplossingen voor het nieuwe Kooi Stadion, als voorbeeld van de groeiende vraag naar duurzame utiliteitsbouwdeuren.</div>
+            <div class="news-title">LCA's en EPD's beschikbaar voor geheel productassortiment</div>
+            <div class="news-meta">2026 · bpz.nl</div>
+            <div class="news-summary">BPZ (via productiepartner Van Vuuren) biedt LCA's (Levenscyclusanalyses) en EPD's (Environmental Product Declarations) voor alle producten. Gecertificeerd volgens FSC®, BREEAM, KOMO en LEED. Standaard STIP®-gecertificeerd; op aanvraag ook FSC®- of BREEAM NL-keurmerk leverbaar.</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke productontwikkelingen gevonden in periode jan–mei 2026.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SUSSELBEEK -->
+  <!-- SUSELBEEK -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Deurenfabriek Suselbeek</span>
+      <div class="comp-name">Deurenfabriek Suselbeek</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">4 berichten · Q1–Q2 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke commerciële campagnes gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke duurzaamheidsberichten gevonden (focus lag op productontwikkeling).</div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.suselbeek.nl/" target="_blank">BASICO deurschaal: los leverbaar voor eigen productie</a>
-            <div class="news-meta">2026 &mdash; Suselbeek</div>
-            <div class="news-summary">Timmerbedrijven kunnen de kale BASICO deurschaal los afnemen van Suselbeek voor gebruik in hun eigen productieproces &mdash; nieuwe marktbenadering voor halffabrikaten.</div>
+            <div class="news-title">COMFORTA buitendeur gelanceerd — 35% hogere isolatiewaarden</div>
+            <div class="news-meta">2026 · suselbeek.nl / timmerfabrikant.nl</div>
+            <div class="news-summary">De nieuwe COMFORTA-deur is een geïsoleerde buitendeur die oogt als traditionele drempelvrije deur maar tot 35% hogere isolatiewaarden biedt. Significant minder onderhoud nodig. Ontwikkeld op basis van klantwensen rondom comfort (geluid en klimaat) en duurzaamheid.</div>
           </div>
           <div class="news-item">
-            <a class="news-title" href="https://www.suselbeek.nl/" target="_blank">COMFORTA buitendeuren: 35% betere isolatie</a>
-            <div class="news-meta">2026 &mdash; Suselbeek</div>
-            <div class="news-summary">Nieuwe ge&iuml;soleerde buitendeuren die eruitzien als drempeldeuren maar een tot 35% hogere isolatiewaarde hebben en aanzienlijk minder onderhoud vereisen.</div>
+            <div class="news-title">CALMA deuren — geluidsreductie tot 43 dB, tevens brand- en rookwerend</div>
+            <div class="news-meta">2026 · suselbeek.nl / houtwereld.nl</div>
+            <div class="news-summary">Suselbeek introduceert de CALMA-lijn: deuren die buitengeluiden met tot 43 dB reduceren. Combinatie met brand- en rookwerendheid maakt dit een uniek product voor de utiliteits- en projectbouw waar meerdere eisen samenkomen.</div>
           </div>
           <div class="news-item">
-            <a class="news-title" href="https://www.suselbeek.nl/" target="_blank">CALMA deuren: geluidreductie tot 43 dB</a>
-            <div class="news-meta">2026 &mdash; Suselbeek</div>
-            <div class="news-summary">Nieuwe deurmodellen met externe geluidreductie tot 43 decibel, tevens brand- en rookwerend verkrijgbaar. Speciaal ontwikkeld voor woningen aan drukke wegen en appartementencomplexen.</div>
+            <div class="news-title">BASICO — losse platte deurschaal direct leverbaar aan timmerbedrijven</div>
+            <div class="news-meta">2026 · suselbeek.nl</div>
+            <div class="news-summary">Met BASICO kunnen timmerbedrijven een platte deurschaal rechtstreeks bij Suselbeek afnemen, waarna ze zelf maatwerk kunnen toepassen. Verhoogt flexibiliteit in de keten en versnelt levertijden bij projecten met specifieke afmetingen.</div>
           </div>
+          <div class="news-item">
+            <div class="news-title">Verfsystemen vernieuwd — beter kleurvast en duurzamer</div>
+            <div class="news-meta">2026 · suselbeek.nl</div>
+            <div class="news-summary">Suselbeek heeft de toegepaste verfsystemen op haar deuren vernieuwd. Verbeterde kleurvastheid en langere onderhoudsinterval. Aanpassing geldt voor de gehele productlijn en sluit aan bij de stijgende klantvraag naar onderhoudsarme oplossingen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VAN DER PLAS -->
+  <div class="competitor-card">
+    <div class="comp-header open" onclick="toggle(this)">
+      <div class="comp-name">Deurenfabriek Van der Plas</div>
+      <div class="comp-meta">
+        <span class="item-count">1 bericht · 2026</span>
+        <span class="badge badge-low">Beperkt</span>
+        <span class="chevron">▼</span>
+      </div>
+    </div>
+    <div class="comp-body open">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <div class="news-title">Hernieuwde samenwerking met Anker Stuy Coatings</div>
+            <div class="news-meta">2026 · ankerstuy.com</div>
+            <div class="news-summary">Deurenfabriek Van der Plas (Hardinxveld-Giessendam) herbevestigt en vernieuwt de samenwerking met Anker Stuy Coatings. Gezamenlijke focus op klangerichte oplossingen en langjarige garanties. Van der Plas ziet Anker Stuy als strategisch partner voor productontwikkeling en afwerkkwaliteit.</div>
+          </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="no-news">Geen specifieke duurzaamheidsberichten gevonden in periode jan–mei 2026.</div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen specifieke productontwikkelingen gevonden in periode jan–mei 2026.</div>
         </div>
       </div>
     </div>
@@ -559,42 +605,37 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- VERWEIJ -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Verweij Houttechniek</span>
+      <div class="comp-name">Verweij Houttechniek</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">2 berichten · apr–mei 2026</span>
+        <span class="badge badge-medium">Matig actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke campagnes gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.verweij-ht.nl/nieuws/" target="_blank">Artikel: circulair werken in de praktijk</a>
-            <div class="news-meta">Maart 2026 &mdash; Verweij Houttechniek</div>
-            <div class="news-summary">Verweij Houttechniek publiceert een praktijkartikel over hoe circulair werken eruitziet bij het bedrijf, als inspiratie voor de sector. Doelstelling: 100% circulariteit in 2040.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.verweij-ht.nl/nieuws/" target="_blank">Ge&iuml;soleerde paneldeuren nu met biobased vulling</a>
-            <div class="news-meta">April 2026 &mdash; Verweij Houttechniek</div>
-            <div class="news-summary">Ge&iuml;soleerde houten paneldeuren zijn voortaan ook leverbaar met een biobased materiaalvulling, wat de milieuvoetafdruk aanzienlijk verlaagt.</div>
+            <div class="news-title">Geïsoleerde houten paneldeuren nu met biobased isolatiemateriaal</div>
+            <div class="news-meta">April 2026 · verweij-ht.nl</div>
+            <div class="news-summary">Verweij kondigt aan dat hun geïsoleerde houten paneldeuren voortaan standaard worden geleverd met een vulling van biobased isolatiemateriaal. Dit verlaagt de milieu-impact van het product en sluit aan bij de groeiende vraag naar biobased oplossingen in de bouw. De deuren behouden hun BCRG-certificering.</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.verweij-ht.nl/" target="_blank">Nieuwe volledig automatische productielijn in aanbouw</a>
-            <div class="news-meta">Mei 2026 &mdash; Verweij Houttechniek</div>
-            <div class="news-summary">Verweij Houttechniek bouwt een nieuwe volledig automatische productielijn in een van de productiehallen. De lijn verwerkt hout van stapel tot afgewerkt product.</div>
+            <div class="news-title">Volledig automatische productielijn in aanbouw</div>
+            <div class="news-meta">Mei 2026 · verweij-ht.nl</div>
+            <div class="news-summary">Verweij Houttechniek investeert in een gloednieuwe, volledig automatische productielijn in één van hun productiehallen. De investering vergroot capaciteit en kwaliteitsbestendigheid, en positioneert Verweij voor verdere groei in de projectmarkt voor ramen, deuren en kozijnen.</div>
           </div>
         </div>
       </div>
@@ -604,74 +645,34 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- KREPEL -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Krepel Deuren</span>
+      <div class="comp-name">Krepel Deuren</div>
       <div class="comp-meta">
-        <span class="item-count">1 bericht</span>
-        <span class="badge badge-low">Laag</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">1 bericht · mrt 2026</span>
+        <span class="badge badge-low">Beperkt</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke campagnes gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.krepeldeuren.nl/nieuws/" target="_blank">Elektrisch rijden voor deurleveringen geïntroduceerd</a>
-            <div class="news-meta">9 maart 2026 &mdash; Krepel Deuren</div>
-            <div class="news-summary">Krepel Deuren zet een nieuwe stap richting duurzame logistiek: deuren worden voortaan bezorgd met elektrische voertuigen, waarmee de CO&sup2;-uitstoot van de eigen distributie daalt.</div>
+            <div class="news-title">Elektrische bezorging geïntroduceerd — duurzame logistiek</div>
+            <div class="news-meta">9 maart 2026 · krepeldeuren.nl</div>
+            <div class="news-summary">Krepel Deuren zet een nieuwe stap in duurzame logistiek: deuren worden voortaan bezorgd met elektrische voertuigen. Onderdeel van de brede duurzaamheidsstrategie van dit familiebedrijf (opgericht 1870, ca. 180 medewerkers) uit Klarenbeek. Duurzaamheid volledig geïntegreerd in werkwijze.</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
-          <p class="no-news">Geen activiteit gevonden</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- IDEAAL -->
-  <div class="competitor-card">
-    <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Houtindustrie Ideaal</span>
-      <div class="comp-meta">
-        <span class="item-count">2 berichten</span>
-        <span class="badge badge-low">Laag</span>
-        <span class="chevron">&#9660;</span>
-      </div>
-    </div>
-    <div class="comp-body open">
-      <div class="themes-grid">
-        <div class="theme-box t-comm">
-          <div class="theme-label">Commercieel</div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.ideaal.nl/nieuws/" target="_blank">Nieuwe GND-garantielabels geplaatst</a>
-            <div class="news-meta">2026 &mdash; Houtindustrie Ideaal</div>
-            <div class="news-summary">Houtindustrie Ideaal implementeert de vernieuwde GND-garantielabels op het volledige deurenpakket, in lijn met het sectorbreed vernieuwde GND-systeem.</div>
-          </div>
-        </div>
-        <div class="theme-box t-dig">
-          <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
-        </div>
-        <div class="theme-box t-duur">
-          <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
-        </div>
-        <div class="theme-box t-prod">
-          <div class="theme-label">Productontwikkeling</div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.ideaal.nl/fabrikant-binnendeuren/" target="_blank">Profilux Industrial: zwart UV-gecoate houten binnendeur</a>
-            <div class="news-meta">2026 &mdash; Houtindustrie Ideaal</div>
-            <div class="news-summary">Ideaal voegt de Profilux Industrial zwart UV-gecoate houten binnendeur toe aan het assortiment, aansluitend op de industriële interieurtrend. Toegepast in o.a. het Latona-project in Utrecht.</div>
-          </div>
+          <div class="no-news">Geen specifieke productontwikkelingen gevonden in periode jan–mei 2026.</div>
         </div>
       </div>
     </div>
@@ -680,41 +681,42 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- KEGRO -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Kegro Deuren</span>
+      <div class="comp-name">Kegro Deuren</div>
       <div class="comp-meta">
-        <span class="item-count">3 berichten</span>
-        <span class="badge badge-medium">Medium</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · Q1–Q2 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <div class="news-item">
-            <a class="news-title" href="https://kegro.nl/nieuwsitems/" target="_blank">Vernieuwd GND-garantielabel ge&iuml;mplementeerd</a>
-            <div class="news-meta">2026 &mdash; Kegro</div>
-            <div class="news-summary">Kegro voert het vernieuwde GND-garantielabel in op het volledige assortiment, waardoor herkenbaarheid, traceerbaarheid en betrouwbaarheid van houten deuren worden versterkt.</div>
-          </div>
+          <div class="no-news">Geen specifieke campagnes of beursen gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.afvalgids.nl/lentekracht-zet-circulair-onderzoek-oude-deuren-om-in-praktijk/" target="_blank">Circulair onderzoek oude deuren met Lentekracht</a>
-            <div class="news-meta">2026 &mdash; Kegro / Lentekracht</div>
-            <div class="news-summary">Kegro onderzoekt samen met Lentekracht hoe oude deuren een tweede leven kunnen krijgen in plaats van als afval te worden afgevoerd. Doel: waardevolle grondstoffen benutten uit retourstromen.</div>
+            <div class="news-title">Doel 100% FSC/PEFC-gecertificeerd hout voor eind 2026</div>
+            <div class="news-meta">2026 · kegro.nl</div>
+            <div class="news-summary">Kegro stelt zich als doel om uiterlijk eind 2026 uitsluitend 100% FSC- en/of PEFC-gecertificeerd hout in te kopen. Onderdeel van een bredere duurzaamheidsagenda die ook circulair onderzoek naar oude deuren omvat (Lentekracht-project).</div>
           </div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://kegro.nl/nieuwe-standaard-massief-houten-deuren-kegro/" target="_blank">Start bouw gerobotiseerde productielijn massief houten deuren</a>
-            <div class="news-meta">Januari 2026 &mdash; Kegro</div>
-            <div class="news-summary">Kegro start in januari 2026 met de bouw van een gloednieuwe gerobotiseerde productielijn voor massief houten deuren, geleverd door Working Process (IT). Kern: CNC-bewerkingscentrum SUPER HEROES 7.12.51 met 12 hoofdmotoren waaronder vier 5-assige eenheden. De lijn kan autonoom een complete ploeg draaien. &#233;&eacute;n van de grootste technologische investeringen in de bedrijfshistorie.</div>
+            <div class="news-title">Architectura designdeurenlijn — acht modellen, vijf architectenbureaus</div>
+            <div class="news-meta">2026 · kegro.nl / kegro-architectura.nl</div>
+            <div class="news-summary">Kegro presenteert de Architectura-lijn: acht designdeuren ontwikkeld in samenwerking met vijf toonaangevende architectenbureaus (M3H, Bedaux de Brouwer, Van Bergen Architectura, FARO, TANK). Diversiteit, eigenheid en functionaliteit als kern. Gepresenteerd via eigen website kegro-architectura.nl — sterk gepositioneerd bij architectenmarkt.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title">Nieuwe massief houten deurproductielijn in aanbouw</div>
+            <div class="news-meta">2026 · kegro.nl</div>
+            <div class="news-summary">Kegro werkt aan één van de grootste technologische innovaties in haar geschiedenis: een volledig nieuwe productielijn voor massief houten deuren. Geavanceerde machinestraat wordt in de komende twee jaar gebouwd en zal het productieproces ingrijpend veranderen — hogere capaciteit en kwaliteitsborging.</div>
           </div>
         </div>
       </div>
@@ -724,11 +726,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- AUSTRIA TÜREN -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggle(this)">
-      <span class="comp-name">Austria T&uuml;ren (Austria Deuren)</span>
+      <div class="comp-name">Austria Türen</div>
       <div class="comp-meta">
-        <span class="item-count">5 berichten</span>
-        <span class="badge badge-high">Hoog</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">3 berichten · Q1–Q2 2026</span>
+        <span class="badge badge-high">Actief</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
@@ -736,94 +738,83 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.dekkerhout.nl/nieuws/nieuwe-brochure-austria-deuren-verschenen" target="_blank">Nieuwe brochure Austria Deuren 2026&ndash;2027 uitgebracht</a>
-            <div class="news-meta">2026 &mdash; Austria Deuren / Dekker Hout</div>
-            <div class="news-summary">Austria Deuren lanceert de nieuwe brochure 2026&ndash;2027 met meer dan 160 pagina&rsquo;s: binnendeuren, buitendeuren, terras- en balkondeuren, deurbeslag en aanvullende producten inclusief kozijnen en dorpellijsten.</div>
+            <div class="news-title">Nieuwe brochure Austria Deuren 2026-2027 uitgebracht</div>
+            <div class="news-meta">2026 · dekkerhout.nl / deurmarkt.com</div>
+            <div class="news-summary">Austria Deuren lanceert de brochure 2026-2027: meer dan 160 pagina's met het complete assortiment binnendeuren, buitendeuren, terras- en balkondeuren, beslag (Forza-lijn) en accessoires als kozijnen en deuromlijstingen. Breed ingezet via distributiekanalen en dealers in Nederland.</div>
           </div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">FSC-gecertificeerd hout standaard in groot deel van het assortiment; 12 jaar garantie op luxe binnendeuren. Geen specifieke nieuwe duurzaamheidsberichten gevonden in periode jan–mei 2026.</div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.deuren.nl/binnendeuren/industriele-binnendeuren/fertig" target="_blank">Fertig Stark: CPL deur met tactiele 3D houtlook</a>
-            <div class="news-meta">2026 &mdash; Austria Deuren</div>
-            <div class="news-summary">De Fertig serie wordt uitgebreid met Fertig Stark: een CPL deur met een tactiele 3D houtlook finish. Combinatie van industrieel uitstraling en hoogwaardige tastvariatie.</div>
+            <div class="news-title">Japandi-serie geïntroduceerd — organische glasmodellen in wit, zwart &amp; eik</div>
+            <div class="news-meta">2026 · deuren.nl</div>
+            <div class="news-summary">Austria lanceert de Japandi-serie: organische glasmodellen in voorgelakt wit en zwart, behandeld eiken en een champagnebrons-afwerking. Speelt in op de Japandi-woontrend (combinatie Japans minimalisme + Scandinavisch design). Beschikbaar in flush en opdekuitvoering, breed maatbereik verwacht per aug/sep 2026.</div>
           </div>
           <div class="news-item">
-            <a class="news-title" href="https://www.deuren.nl/" target="_blank">DKC: brand- &amp; rookwerende deur/kozijn-combinaties uit voorraad</a>
-            <div class="news-meta">2026 &mdash; Austria Deuren</div>
-            <div class="news-summary">Het DKC-programma wordt uitgebreid met gecertificeerde brand- en rookwerende deur/kozijn-combinaties (30 en 60 min., NEN-EN 1634-3), leverbaar uit voorraad in diverse maten.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.deuren.nl/flexikozijnen-flexikozijn-zwart-md70-270x93cm-026665" target="_blank">Austria FlexiKozijn: renovatiekozijn voor vlakke binnendeuren</a>
-            <div class="news-meta">2026 &mdash; Austria Deuren</div>
-            <div class="news-summary">Nieuw wandomvattend renovatiekozijn voor vlakke binnendeuren, eenvoudig op maat te zagen. Beschikbaar in zwart en wit voor wanddikten van 7 en 10 cm.</div>
-          </div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.deuren.nl/" target="_blank">Flush buisvuren- en kanaalhoutdeuren terug in assortiment</a>
-            <div class="news-meta">2026 (verwacht juli) &mdash; Austria Deuren</div>
-            <div class="news-summary">Austria Deuren brengt flush buisvurenhout en kanaalhout deuren terug in het assortiment op verzoek van de markt. Beschikbaar vanaf circa juli 2026.</div>
+            <div class="news-title">Austria FlexiKozijn gelanceerd voor renovatieprojecten</div>
+            <div class="news-meta">2026 · deuren.nl</div>
+            <div class="news-summary">Nieuw in het assortiment: het FlexiKozijn — een wandomsluitend renovatiekozijn dat eenvoudig op maat gezaagd kan worden. Beschikbaar in zwart en wit, voor muurdikte 7 en 10 cm. Vervangt bestaand stalen opdekkozijn zonder aanpassing van de kozijnuitsparing. FSC-gecertificeerd.</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- VAN DER PLAS - stil -->
+  <!-- STILLE CONCURRENT: IDEAAL -->
+  <div class="section-title" style="margin-top:24px;">Stille concurrenten (week 1–20)</div>
+
   <div class="competitor-card">
     <div class="comp-header" onclick="toggle(this)">
-      <span class="comp-name">Deurenfabriek Van der Plas</span>
+      <div class="comp-name">Houtindustrie Ideaal</div>
       <div class="comp-meta">
-        <span class="item-count">1 bericht</span>
-        <span class="badge badge-low">Laag</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">0 berichten gevonden · jan–mei 2026</span>
+        <span class="badge badge-low">Stil</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body">
       <div class="themes-grid">
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
-          <div class="news-item">
-            <a class="news-title" href="https://www.ankerstuy.com/nieuws/van-der-plas/" target="_blank">Hernieuwd partnerschap met Anker Stuy Coatings</a>
-            <div class="news-meta">2026 &mdash; Anker Stuy / Van der Plas</div>
-            <div class="news-summary">Deurenfabriek Van der Plas verdiept de samenwerking met Anker Stuy Coatings, gericht op klantgerichte oplossingen en gezamenlijke productontwikkeling voor afwerkingen op houten buitendeuren.</div>
-          </div>
+          <div class="no-news">Geen actieve communicatie gevonden in de onderzochte periode.</div>
         </div>
         <div class="theme-box t-dig">
           <div class="theme-label">Digitaal</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen relevante digitale activiteit gevonden.</div>
         </div>
         <div class="theme-box t-duur">
           <div class="theme-label">Duurzaamheid</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen specifieke berichten — KOMO-gecertificeerde productie actief; deuren voor o.a. project Latona Utrecht.</div>
         </div>
         <div class="theme-box t-prod">
           <div class="theme-label">Productontwikkeling</div>
-          <p class="no-news">Geen activiteit gevonden</p>
+          <div class="no-news">Geen publiek gecommuniceerde productontwikkelingen in periode jan–mei 2026.</div>
         </div>
       </div>
     </div>
   </div>
 
-</div>
+</div><!-- /.container -->
 
 <footer>
-  Albo Concurrentieradar &mdash; Terugblik 1 jan &ndash; 18 mei 2026 &mdash; Albo Deuren B.V.
+  Albo Concurrentieradar &middot; Terugblik 1 jan – 18 mei 2026 &middot; Albo Deuren B.V. &middot; Gegenereerd 9 juni 2026
 </footer>
 
 <script>
-function toggle(header) {
-  header.classList.toggle('open');
-  const body = header.nextElementSibling;
-  body.classList.toggle('open');
-}
+  function toggle(header) {
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
 </script>
+
 </body>
 </html>
