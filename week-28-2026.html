@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Albo Concurrentieradar – Week 28 · 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; color: #1a1a2e; }
+header { background: #1a1a2e; color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,0.35); }
+.header-left { display: flex; align-items: center; gap: 16px; }
+.header-logo { height: 38px; width: auto; filter: brightness(0) invert(1); }
+.header-text h1 { font-size: 1.3rem; font-weight: 800; }
+.header-text .subtitle { font-size: 0.75rem; color: #94a3b8; margin-top: 2px; }
+.week-nav { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.week-nav a { padding: 5px 11px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-decoration: none; color: #94a3b8; background: rgba(255,255,255,0.08); }
+.week-nav a:hover { background: rgba(255,255,255,0.18); color: white; }
+.week-nav a.active { background: #e67e22; color: white; }
+.week-nav a.hist { background: rgba(124,58,237,0.25); color: #c4b5fd; }
+.container { max-width: 1260px; margin: 0 auto; padding: 28px 22px 50px; }
+.section-title { font-size: 1rem; font-weight: 700; margin-bottom: 14px; padding-left: 12px; border-left: 4px solid #e67e22; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-bottom: 22px; }
+.stat-card { background: white; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+.stat-card .number { font-size: 2.1rem; font-weight: 800; line-height: 1; }
+.stat-card .label { font-size: 0.73rem; color: #64748b; margin-top: 5px; }
+.c-red .number{color:#e74c3c} .c-orange .number{color:#e67e22} .c-blue .number{color:#2980b9} .c-green .number{color:#27ae60} .c-purple .number{color:#8e44ad}
+.overview-wrap { background: white; border-radius: 10px; overflow-x: auto; margin-bottom: 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+.overview-wrap table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+.overview-wrap th { padding: 10px 14px; background: #f8fafc; color: #64748b; font-weight: 700; border-bottom: 1px solid #e2e8f0; }
+.overview-wrap th:not(:first-child) { text-align: center; }
+.overview-wrap td { padding: 9px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.overview-wrap td:not(:first-child) { text-align: center; }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+.dot-high{background:#e74c3c} .dot-medium{background:#f39c12} .dot-low{background:#dde3ea}
+.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+.badge-high{background:#fdecea;color:#e74c3c} .badge-medium{background:#fef3e2;color:#e67e22} .badge-low{background:#f1f5f9;color:#94a3b8}
+.competitor-card { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); overflow: hidden; }
+.comp-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; cursor: pointer; user-select: none; transition: background 0.12s; }
+.comp-header:hover { background: #fafafa; }
+.comp-name { font-size: 1rem; font-weight: 700; }
+.comp-meta { display: flex; align-items: center; gap: 10px; }
+.item-count { font-size: 0.78rem; color: #94a3b8; }
+.chevron { font-size: 0.85rem; color: #94a3b8; transition: transform 0.2s; }
+.comp-header.open .chevron { transform: rotate(180deg); }
+.comp-body { display: none; padding: 4px 20px 20px; border-top: 1px solid #f1f5f9; }
+.comp-body.open { display: block; }
+.themes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+@media(max-width:680px){.themes-grid{grid-template-columns:1fr}}
+.theme-box { border-radius: 8px; padding: 13px 14px; }
+.t-comm{background:#fff8f0;border-left:3px solid #e67e22} .t-dig{background:#f0f7ff;border-left:3px solid #2980b9} .t-duur{background:#f0faf4;border-left:3px solid #27ae60} .t-prod{background:#f8f0ff;border-left:3px solid #8e44ad}
+.theme-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 9px; }
+.t-comm .theme-label{color:#e67e22} .t-dig .theme-label{color:#2980b9} .t-duur .theme-label{color:#27ae60} .t-prod .theme-label{color:#8e44ad}
+.news-item { padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.news-item:last-child { border-bottom: none; }
+.news-title { font-size: 0.82rem; font-weight: 600; color: #1a1a2e; text-decoration: none; line-height: 1.35; }
+a.news-title:hover{color:#2980b9}
+.news-meta { font-size: 0.71rem; color: #94a3b8; margin-top: 2px; }
+.news-summary { font-size: 0.79rem; color: #475569; margin-top: 4px; line-height: 1.45; }
+.no-news { font-size: 0.79rem; color: #b0bac5; font-style: italic; }
+footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-left">
+    <img src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren" class="header-logo">
+    <div class="header-text">
+      <h1>Concurrentieradar</h1>
+      <div class="subtitle">Week 28 &middot; 6 juli 2026 &ndash; 12 juli 2026 &middot; Deurenfabrikanten NL</div>
+    </div>
+  </div>
+  <nav class="week-nav">
+    <a href="historisch-2026.html" class="hist">Rest jaar</a>
+    <a href="week-28-2026.html" class="active">W28</a>
+    <a href="week-25-2026.html">W25</a>
+    <a href="week-24-2026.html">W24</a>
+    <a href="week-23-2026.html">W23</a>
+    <a href="week-22-2026.html">W22</a>
+    <a href="week-21-2026.html">W21</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Weekoverzicht</div>
+
+  <div class="stats-row">
+    <div class="stat-card c-red">
+      <div class="number">0</div>
+      <div class="label">Actief (2+ berichten)</div>
+    </div>
+    <div class="stat-card c-orange">
+      <div class="number">0</div>
+      <div class="label">Commercieel</div>
+    </div>
+    <div class="stat-card c-blue">
+      <div class="number">0</div>
+      <div class="label">Digitaal</div>
+    </div>
+    <div class="stat-card c-green">
+      <div class="number">0</div>
+      <div class="label">Duurzaamheid</div>
+    </div>
+    <div class="stat-card c-purple">
+      <div class="number">0</div>
+      <div class="label">Productontwikkeling</div>
+    </div>
+  </div>
+
+  <div class="overview-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Concurrent</th>
+          <th>Commercieel</th>
+          <th>Digitaal</th>
+          <th>Duurzaamheid</th>
+          <th>Productontwikkeling</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Weekamp</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Skantrae</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Berkvens</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Svedex</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Van Vuuren</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>BPZ</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Suselbeek</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Van der Plas</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Verweij</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Krepel</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Ideaal</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Kegro</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td>Austria T&uuml;ren</td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Concurrenten &mdash; detail</div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Weekamp</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28 (6–12 juli 2026).</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Skantrae</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Berkvens</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Svedex</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Van Vuuren</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">BPZ</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Suselbeek</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Van der Plas</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Verweij</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Krepel</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Ideaal</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Kegro</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Austria T&uuml;ren</span>
+      <div class="comp-meta"><span class="badge badge-low">Stil</span><span class="chevron">&#9660;</span></div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm"><div class="theme-label">Commercieel</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-dig"><div class="theme-label">Digitaal</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-duur"><div class="theme-label">Duurzaamheid</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+        <div class="theme-box t-prod"><div class="theme-label">Productontwikkeling</div><p class="no-news">Geen bevestigd nieuws in week 28.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Albo Concurrentieradar &middot; Week 28 2026 &middot; Albo Deuren B.V.</footer>
+
+<script>
+function toggle(h){
+  const b = h.nextElementSibling;
+  b.classList.toggle('open');
+  h.classList.toggle('open');
+}
+</script>
+</body>
+</html>
