@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concurrentieradar · Week 22 · 2026</title>
+<title>Albo Concurrentieradar — Week 22, 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; color: #1a1a2e; }
@@ -57,11 +60,7 @@ a.news-title:hover{color:#2980b9}
 .news-meta { font-size: 0.71rem; color: #94a3b8; margin-top: 2px; }
 .news-summary { font-size: 0.79rem; color: #475569; margin-top: 4px; line-height: 1.45; }
 .no-news { font-size: 0.79rem; color: #b0bac5; font-style: italic; }
-.silent-list { padding: 14px 20px 16px; font-size: 0.82rem; color: #94a3b8; }
-.silent-list ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.silent-list li { background: #f1f5f9; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: #64748b; }
-.info-banner { background: #fff8f0; border: 1px solid #f5cba7; border-radius: 10px; padding: 14px 18px; margin-bottom: 22px; font-size: 0.83rem; color: #7d4e1a; line-height: 1.55; }
-.info-banner strong { color: #e67e22; }
+.correctie-banner { background: #fef3cd; border: 1px solid #f59e0b; border-radius: 8px; padding: 10px 16px; margin-bottom: 18px; font-size: 0.82rem; color: #92400e; }
 footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 20px; }
 </style>
 </head>
@@ -69,10 +68,10 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 
 <header>
   <div class="header-left">
-    <img class="header-logo" src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren">
+    <img src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren" class="header-logo">
     <div class="header-text">
       <h1>Concurrentieradar</h1>
-      <div class="subtitle">Week 22 &middot; 25&ndash;31 mei 2026 &middot; Deurenfabrikanten NL</div>
+      <div class="subtitle">Week 22 &nbsp;&middot;&nbsp; 25&ndash;31 mei 2026 &nbsp;&middot;&nbsp; Deurenfabrikanten NL</div>
     </div>
   </div>
   <nav class="week-nav">
@@ -88,77 +87,74 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 
 <div class="container">
 
-  <div class="info-banner">
-    <strong>Correctierun &mdash; Strikte datumfilter toegepast.</strong> Dit rapport bevat uitsluitend nieuwsberichten waarvan de publicatiedatum <em>aantoonbaar</em> valt binnen week 22 (25&ndash;31 mei 2026). Na uitgebreid onderzoek is &eacute;&eacute;n bericht met een bevestigde publicatiedatum in deze week vastgesteld: een artikel over Skantrae gepubliceerd op <strong>27 mei 2026</strong> via meerdere BouwPartner-kanalen. Alle overige concurrenten zijn geclassificeerd als <strong>STIL</strong>.
+  <div class="section-title">Weekoverzicht &mdash; 25 t/m 31 mei 2026</div>
+
+  <div class="correctie-banner">
+    &#9888; <strong>Correctierun</strong> &mdash; Dit rapport bevat uitsluitend berichten met een aantoonbaar bevestigde publicatiedatum binnen week 22 (25&ndash;31 mei 2026). Berichten zonder verifieerbare datum in deze periode zijn weggelaten conform de kritische datumregel.
   </div>
 
-  <div class="section-title">Weekoverzicht &mdash; Week 22, 25&ndash;31 mei 2026</div>
-
   <div class="stats-row">
-    <div class="stat-card c-blue">
-      <div class="number">1</div>
-      <div class="label">Berichten (bevestigd week 22)</div>
-    </div>
     <div class="stat-card c-red">
       <div class="number">0</div>
-      <div class="label">Actieve concurrenten (2+)</div>
+      <div class="label">Actieve concurrenten</div>
     </div>
     <div class="stat-card c-orange">
       <div class="number">1</div>
-      <div class="label">Beperkt actief (1 bericht)</div>
+      <div class="label">Commerciële signalen</div>
     </div>
-    <div class="stat-card c-purple">
-      <div class="number">12</div>
-      <div class="label">Stille concurrenten</div>
+    <div class="stat-card c-blue">
+      <div class="number">0</div>
+      <div class="label">Digitale signalen</div>
     </div>
     <div class="stat-card c-green">
-      <div class="number">13</div>
-      <div class="label">Concurrenten gemonitord</div>
+      <div class="number">0</div>
+      <div class="label">Duurzaamheidssignalen</div>
+    </div>
+    <div class="stat-card c-purple">
+      <div class="number">0</div>
+      <div class="label">Productontwikkeling</div>
     </div>
   </div>
-
-  <div class="section-title">Overzicht concurrenten</div>
 
   <div class="overview-wrap">
     <table>
       <thead>
         <tr>
           <th>Concurrent</th>
-          <th>Activiteit</th>
-          <th>Comm.</th>
+          <th>Commercieel</th>
           <th>Digitaal</th>
-          <th>Duurzaam</th>
-          <th>Product</th>
-          <th>Berichten</th>
+          <th>Duurzaamheid</th>
+          <th>Productontwikkeling</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Weekamp</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Skantrae</td><td><span class="badge badge-medium">Beperkt</span></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>1</td></tr>
-        <tr><td>Berkvens</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Svedex</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Van Vuuren</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>BPZ</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Susselbeek</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Van der Plas</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Verweij</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Krepel</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Ideaal</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Kegro</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
-        <tr><td>Austria T&uuml;ren</td><td><span class="badge badge-low">Stil</span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td>0</td></tr>
+        <tr><td><strong>Skantrae</strong></td><td><span class="dot dot-medium"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-medium">Beperkt</span></td></tr>
+        <tr><td><strong>Weekamp</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Berkvens</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Svedex</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Van Vuuren</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>BPZ</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Susselbeek</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Van der Plas</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Verweij</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Krepel</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Ideaal</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Kegro</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
+        <tr><td><strong>Austria T&#252;ren</strong></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="dot dot-low"></span></td><td><span class="badge badge-low">Stil</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section-title">Concurrentenkaarten &mdash; Week 22</div>
+  <div class="section-title">Concurrenten &mdash; detail</div>
 
-  <!-- SKANTRAE — BEPERKT (1 bericht, open) -->
+  <!-- SKANTRAE — 1 bevestigd bericht (27 mei 2026) -->
   <div class="competitor-card">
-    <div class="comp-header open" onclick="toggleCard(this)">
+    <div class="comp-header open" onclick="toggle(this)">
       <span class="comp-name">Skantrae</span>
       <div class="comp-meta">
+        <span class="item-count">1 signaal</span>
         <span class="badge badge-medium">Beperkt</span>
-        <span class="item-count">1 bericht</span>
         <span class="chevron">&#9660;</span>
       </div>
     </div>
@@ -167,44 +163,40 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a class="news-title" href="https://www.bouwpartnerschoute.nl/blogs/luxe-binnendeuren-van-skantrae-aan-alles-gedacht-voor-de-vakman/" target="_blank" rel="noopener">
-              Luxe binnendeuren van Skantrae: aan alles gedacht voor de vakman
-            </a>
-            <div class="news-meta">27 mei 2026 &middot; BouwPartner Schoute / Van de Wal / Holten van de Wal</div>
-            <div class="news-summary">BouwPartner-kanalen benadrukken het brede assortiment luxe binnendeuren van Skantrae met praktische oplossingen voor de vakman: hoogwaardige afwerkingen, uitgebreide glas- en afwerkingsopties en complete hang- en sluitwerkpakketten.</div>
+            <a href="https://www.bouwpartner.com/blogs/luxe-binnendeuren-van-skantrae-aan-alles-gedacht-voor-de-vakman/" class="news-title" target="_blank">Luxe binnendeuren van Skantrae: aan alles gedacht voor de vakman</a>
+            <div class="news-meta">bouwpartner.com &nbsp;&middot;&nbsp; 27 mei 2026</div>
+            <div class="news-summary">Meerdere BouwPartner-vestigingen publiceerden op 27 mei 2026 een promotioneel blog over Skantrae's luxe binnendeur-assortiment. Centraal staan de brede collectiebreedte, glas- en afwerkingsopties en de mogelijkheid om hang- en sluitwerkpakketten online samen te stellen. De bijdragen zijn zichtbaar op bouwpartner.com, bouwpartnerzwijndrecht.nl, bouwpartnervandewal.nl en bouwpartnerschoute.nl.</div>
           </div>
+        </div>
+        <div class="theme-box t-dig">
+          <div class="theme-label">Digitaal</div>
+          <div class="no-news">Geen bevestigde signalen in week 22</div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="no-news">Geen bevestigde signalen in week 22</div>
+        </div>
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="no-news">Geen bevestigde signalen in week 22</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STILLE CONCURRENTEN — 12 stuks, gesloten -->
+  <!-- STILLE CONCURRENTEN (12 van 13) -->
   <div class="competitor-card">
-    <div class="comp-header" onclick="toggleCard(this)">
-      <span class="comp-name">Stille concurrenten &mdash; Geen bevestigd nieuws in week 22</span>
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Weekamp, Berkvens, Svedex, Van Vuuren, BPZ, Susselbeek, Van der Plas, Verweij, Krepel, Ideaal, Kegro &amp; Austria T&#252;ren</span>
       <div class="comp-meta">
-        <span class="badge badge-low">12 concurrenten &middot; Stil</span>
+        <span class="item-count">geen bevestigde signalen</span>
+        <span class="badge badge-low">Stil</span>
         <span class="chevron">&#9660;</span>
       </div>
     </div>
     <div class="comp-body">
-      <div class="silent-list">
-        <p>Voor de onderstaande concurrenten kon geen nieuws met een <em>bevestigde publicatiedatum</em> in week 22 (25&ndash;31 mei 2026) worden vastgesteld. Berichten die eerder of later gepubliceerd zijn, zijn conform de kritische datumregel niet opgenomen.</p>
-        <ul>
-          <li>Weekamp</li>
-          <li>Berkvens</li>
-          <li>Svedex</li>
-          <li>Van Vuuren</li>
-          <li>BPZ</li>
-          <li>Susselbeek</li>
-          <li>Van der Plas</li>
-          <li>Verweij</li>
-          <li>Krepel</li>
-          <li>Ideaal</li>
-          <li>Kegro</li>
-          <li>Austria T&uuml;ren</li>
-        </ul>
-        <p style="margin-top:12px; font-size:0.77rem; color:#b0bac5;">Gesignaleerde berichten met datums <em>buiten</em> week 22 (niet opgenomen): Weekamp/Reestmond circulaire recycling (11 apr 2026 / 8 mei 2026) &middot; Berkvens automatisering Timmerfabrikant&nbsp;#5 (19 mei 2026) &middot; Austria T&uuml;ren brochure 2026-2027 (&sim;&nbsp;8 mei 2026) &middot; Verweij productielijn (12 mei 2026) &middot; Krepel elektrisch transport (mrt 2026) &middot; Suselbeek Calma deur (8 jun 2026)</p>
+      <div style="padding-top:10px">
+        <div class="no-news">Voor geen van deze 12 concurrenten kon een nieuwsbericht worden gevonden met een aantoonbaar bevestigde publicatiedatum binnen week 22 (25&ndash;31 mei 2026). Berichten die op of rond deze periode werden gevonden hadden ofwel een publicatiedatum v&oacute;&oacute;r 25 mei (bijv. Weekamp&ndash;Reestmond: 14 april; Berkvens automatisering: 19 mei; Austria T&uuml;ren brochure: 8 mei) of n&aacute; 31 mei (bijv. Susselbeek Calma: 5 juni; Van Vuuren&ndash;GreenInclusive: 10 juni). Conform de kritische datumregel zijn deze niet opgenomen.</div>
       </div>
     </div>
   </div>
@@ -212,16 +204,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 </div>
 
 <footer>
-  Albo Concurrentieradar &middot; Automatisch gegenereerd &middot; Correctierun &middot; Week 22, 2026 &middot; Albo Deuren B.V.
+  Albo Concurrentieradar &mdash; Correctierun &mdash; Week 22, 2026 &mdash; Albo Deuren B.V.
 </footer>
 
 <script>
-function toggleCard(header) {
-  header.classList.toggle('open');
-  const body = header.nextElementSibling;
-  body.classList.toggle('open');
-}
+function toggle(h){const b=h.nextElementSibling;b.classList.toggle('open');h.classList.toggle('open');}
 </script>
-
 </body>
 </html>
