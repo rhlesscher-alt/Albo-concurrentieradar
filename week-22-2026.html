@@ -57,8 +57,8 @@ a.news-title:hover{color:#2980b9}
 .news-meta { font-size: 0.71rem; color: #94a3b8; margin-top: 2px; }
 .news-summary { font-size: 0.79rem; color: #475569; margin-top: 4px; line-height: 1.45; }
 .no-news { font-size: 0.79rem; color: #b0bac5; font-style: italic; }
-.stil-list { font-size: 0.82rem; color: #64748b; padding: 6px 0; }
-.stil-list span { display: inline-block; background: #f1f5f9; border-radius: 4px; padding: 2px 8px; margin: 3px 3px 3px 0; font-size: 0.75rem; }
+.notice-box { background: #fff8f0; border: 1px solid #f5d9b5; border-radius: 8px; padding: 12px 16px; margin-bottom: 22px; font-size: 0.82rem; color: #7a4a1a; }
+.notice-box strong { color: #c0620a; }
 footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; border-top: 1px solid #e2e8f0; margin-top: 20px; }
 </style>
 </head>
@@ -66,10 +66,10 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 
 <header>
   <div class="header-left">
-    <img src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren" class="header-logo">
+    <img class="header-logo" src="https://www.albodeuren.nl/wp-content/uploads/2023/05/Albo-logo-FC.png" alt="Albo Deuren">
     <div class="header-text">
       <h1>Concurrentieradar</h1>
-      <div class="subtitle">Week 22 &middot; 25&ndash;31 mei 2026 &middot; Deurenfabrikanten NL</div>
+      <div class="subtitle">Week 22 · 25–31 mei 2026 · Deurenfabrikanten NL</div>
     </div>
   </div>
   <nav class="week-nav">
@@ -89,30 +89,34 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 
 <div class="container">
 
+  <div class="notice-box">
+    <strong>Correctierun week 22.</strong> Dit rapport bevat uitsluitend nieuwsberichten met een aantoonbare publicatiedatum tussen 25 en 31 mei 2026. Berichten met een onzekere of eerder vastgestelde datum zijn niet opgenomen.
+  </div>
+
   <div class="stats-row">
     <div class="stat-card c-blue">
-      <div class="number">13</div>
-      <div class="label">Concurrenten geanalyseerd</div>
-    </div>
-    <div class="stat-card c-orange">
       <div class="number">1</div>
-      <div class="label">Bevestigde berichten week 22</div>
+      <div class="label">Berichten week 22</div>
     </div>
     <div class="stat-card c-red">
       <div class="number">0</div>
-      <div class="label">Concurrenten ACTIEF (2+ berichten)</div>
+      <div class="label">Actief (2+ berichten)</div>
     </div>
     <div class="stat-card c-orange">
       <div class="number">1</div>
-      <div class="label">Concurrent BEPERKT (1 bericht)</div>
+      <div class="label">Beperkt (1 bericht)</div>
+    </div>
+    <div class="stat-card c-green">
+      <div class="number">12</div>
+      <div class="label">Stil (geen berichten)</div>
     </div>
     <div class="stat-card c-purple">
-      <div class="number">12</div>
-      <div class="label">Concurrenten STIL (geen bericht)</div>
+      <div class="number">13</div>
+      <div class="label">Concurrenten gemonitord</div>
     </div>
   </div>
 
-  <div class="section-title">Overzicht concurrenten &mdash; week 22</div>
+  <div class="section-title">Overzicht concurrenten — week 22 (25–31 mei 2026)</div>
   <div class="overview-wrap">
     <table>
       <thead>
@@ -127,14 +131,6 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
       </thead>
       <tbody>
         <tr>
-          <td><strong>Weekamp</strong></td>
-          <td><span class="badge badge-low">STIL</span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-        </tr>
-        <tr>
           <td><strong>Skantrae</strong></td>
           <td><span class="badge badge-medium">BEPERKT</span></td>
           <td><span class="dot dot-medium"></span></td>
@@ -143,7 +139,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Berkvens</strong></td>
+          <td>Weekamp</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -151,7 +147,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Svedex</strong></td>
+          <td>Berkvens</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -159,7 +155,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Van Vuuren</strong></td>
+          <td>Svedex</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -167,7 +163,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>BPZ</strong></td>
+          <td>Van Vuuren</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -175,7 +171,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Susselbeek</strong></td>
+          <td>BPZ</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -183,7 +179,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Van der Plas</strong></td>
+          <td>Susselbeek</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -191,7 +187,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Verweij</strong></td>
+          <td>Van der Plas</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -199,7 +195,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Krepel</strong></td>
+          <td>Verweij</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -207,7 +203,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Ideaal</strong></td>
+          <td>Krepel</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -215,7 +211,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Kegro</strong></td>
+          <td>Ideaal</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -223,7 +219,15 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td><strong>Austria T&uuml;ren</strong></td>
+          <td>Kegro</td>
+          <td><span class="badge badge-low">STIL</span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-low"></span></td>
+        </tr>
+        <tr>
+          <td>Austria Türen</td>
           <td><span class="badge badge-low">STIL</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
@@ -234,16 +238,16 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
     </table>
   </div>
 
-  <div class="section-title">Concurrentenkaarten</div>
+  <div class="section-title">Concurrentendetail — week 22 (25–31 mei 2026)</div>
 
-  <!-- Skantrae — BEPERKT, open -->
+  <!-- Skantrae — BEPERKT, 1 bericht, open -->
   <div class="competitor-card">
     <div class="comp-header open" onclick="toggleCard(this)">
       <span class="comp-name">Skantrae</span>
       <div class="comp-meta">
         <span class="badge badge-medium">BEPERKT</span>
         <span class="item-count">1 bericht</span>
-        <span class="chevron">&#9660;</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body open">
@@ -251,9 +255,11 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
         <div class="theme-box t-comm">
           <div class="theme-label">Commercieel</div>
           <div class="news-item">
-            <a href="https://www.bouwpartner.com/blogs/luxe-binnendeuren-van-skantrae-aan-alles-gedacht-voor-de-vakman/" class="news-title" target="_blank" rel="noopener">Luxe binnendeuren van Skantrae: aan alles gedacht voor de vakman</a>
-            <div class="news-meta">27 mei 2026 &middot; BouwPartner (meerdere vestigingen)</div>
-            <div class="news-summary">Meerdere BouwPartner-vestigingen publiceerden een artikel over Skantrae&rsquo;s luxe binnendeurencollectie, met aandacht voor het brede assortiment, hoogwaardige afwerkingen, glasopties en hang- &amp; sluitwerkpakketten. Klanten kunnen deuren online samenstellen via de digitale configurator.</div>
+            <a class="news-title" href="https://www.bouwpartner.com/blogs/luxe-binnendeuren-van-skantrae-aan-alles-gedacht-voor-de-vakman/" target="_blank" rel="noopener">
+              Luxe binnendeuren van Skantrae: aan alles gedacht voor de vakman
+            </a>
+            <div class="news-meta">27 mei 2026 · BouwPartner</div>
+            <div class="news-summary">Blog gepubliceerd via het dealer-netwerk van BouwPartner over het uitgebreide Skantrae-assortiment luxe binnendeuren. Benadrukt de brede keuze in glas- en afwerkingsopties, hang- en sluitwerkpakketten en de mogelijkheid om deuren snel en foutloos te bestellen via de online configurator — gericht op de professionele vakman.</div>
           </div>
         </div>
       </div>
@@ -263,37 +269,38 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
   <!-- Stille concurrenten — 12 stuks, gesloten -->
   <div class="competitor-card">
     <div class="comp-header" onclick="toggleCard(this)">
-      <span class="comp-name">Stille concurrenten (12) &mdash; geen bevestigde berichten in week 22</span>
+      <span class="comp-name">12 stille concurrenten</span>
       <div class="comp-meta">
         <span class="badge badge-low">STIL</span>
-        <span class="item-count">0 berichten</span>
-        <span class="chevron">&#9660;</span>
+        <span class="item-count">Weekamp · Berkvens · Svedex · Van Vuuren · BPZ · Susselbeek · Van der Plas · Verweij · Krepel · Ideaal · Kegro · Austria Türen</span>
+        <span class="chevron">▼</span>
       </div>
     </div>
     <div class="comp-body">
-      <div class="stil-list" style="padding: 14px 0 6px;">
-        <p style="font-size:0.79rem;color:#64748b;margin-bottom:10px;">Geen nieuws met aantoonbare publicatiedatum 25&ndash;31 mei 2026 gevonden voor:</p>
-        <span>Weekamp</span>
-        <span>Berkvens</span>
-        <span>Svedex</span>
-        <span>Van Vuuren</span>
-        <span>BPZ</span>
-        <span>Susselbeek</span>
-        <span>Van der Plas</span>
-        <span>Verweij</span>
-        <span>Krepel</span>
-        <span>Ideaal</span>
-        <span>Kegro</span>
-        <span>Austria T&uuml;ren</span>
-      </div>
-      <p class="no-news" style="padding-top:8px;">Gevonden berichten voor deze concurrenten hadden publicatiedatums v&oacute;&oacute;r 25 mei of na 31 mei 2026 en zijn conform de correctieregels niet opgenomen.</p>
+      <p class="no-news" style="padding-top:12px;">
+        Voor deze 12 concurrenten zijn geen nieuwsberichten aangetroffen met een aantoonbare publicatiedatum in week 22 (25–31 mei 2026). Berichten van net buiten deze periode zijn conform de correctierichtlijn niet opgenomen.
+      </p>
+      <ul style="margin-top:10px; padding-left:18px; font-size:0.79rem; color:#64748b; line-height:1.7;">
+        <li><strong>Weekamp</strong> – Reestmond recyclingpartnerschap gepubliceerd 10–16 april 2026 (buiten week 22)</li>
+        <li><strong>Berkvens</strong> – Automatiseringsinvestering verschenen in Timmerfabrikant #5, gepubliceerd 19 mei 2026 (buiten week 22)</li>
+        <li><strong>Svedex</strong> – Nuance-deurenserie uitbreiding: exacte publicatiedatum binnen week 22 niet te bevestigen</li>
+        <li><strong>Van Vuuren</strong> – Hennepen deur (GreenInclusive) gepubliceerd 10 juni 2026 (buiten week 22)</li>
+        <li><strong>BPZ</strong> – Geen bevestigd nieuws in week 22 aangetroffen</li>
+        <li><strong>Susselbeek</strong> – Calma geluidswerende deur gepubliceerd juni 2026 (buiten week 22)</li>
+        <li><strong>Van der Plas</strong> – Geen bevestigd nieuws in week 22 aangetroffen</li>
+        <li><strong>Verweij</strong> – Geautomatiseerde productielijn gepubliceerd 12 mei 2026 (buiten week 22)</li>
+        <li><strong>Krepel</strong> – EV-bezorging gepubliceerd 9 maart 2026 (buiten week 22)</li>
+        <li><strong>Ideaal</strong> – Geen bevestigd nieuws in week 22 aangetroffen</li>
+        <li><strong>Kegro</strong> – 90-minuten brandtest gepubliceerd 22 oktober 2025 (buiten week 22)</li>
+        <li><strong>Austria Türen</strong> – Brochure 2026-2027 gepubliceerd ca. 8 mei 2026 (buiten week 22)</li>
+      </ul>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Albo Concurrentieradar &middot; Week 22, 2026 &middot; Albo Deuren B.V. &middot; Correctierun geverifieerd 4 augustus 2026 &mdash; alleen nieuws 25&ndash;31 mei 2026
+  Albo Concurrentieradar · Automatisch gegenereerd · Week 22, 2026 · Albo Deuren B.V.
 </footer>
 
 <script>
@@ -303,6 +310,5 @@ function toggleCard(header) {
   body.classList.toggle('open');
 }
 </script>
-
 </body>
 </html>
