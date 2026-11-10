@@ -94,15 +94,15 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
 
   <div class="stats-row">
     <div class="stat-card c-orange">
-      <div class="number">3</div>
+      <div class="number">5</div>
       <div class="label">Berichten deze week</div>
     </div>
     <div class="stat-card c-red">
-      <div class="number">3</div>
+      <div class="number">4</div>
       <div class="label">Actieve concurrenten</div>
     </div>
     <div class="stat-card c-blue">
-      <div class="number">0</div>
+      <div class="number">1</div>
       <div class="label">Commercieel</div>
     </div>
     <div class="stat-card c-green">
@@ -110,7 +110,7 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
       <div class="label">Duurzaamheid</div>
     </div>
     <div class="stat-card c-purple">
-      <div class="number">1</div>
+      <div class="number">2</div>
       <div class="label">Productontwikkeling</div>
     </div>
   </div>
@@ -146,12 +146,20 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
-          <td>Weekamp</td>
-          <td><span class="badge badge-low">STIL</span></td>
+          <td><strong>Berkvens</strong></td>
+          <td><span class="badge badge-high">ACTIEF</span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-medium"></span></td>
+          <td><span class="dot dot-low"></span></td>
+        </tr>
+        <tr>
+          <td><strong>Weekamp</strong></td>
+          <td><span class="badge badge-medium">BEPERKT</span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
+          <td><span class="dot dot-medium"></span></td>
         </tr>
         <tr>
           <td>Skantrae</td>
@@ -159,14 +167,6 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
           <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-        </tr>
-        <tr>
-          <td><strong>Berkvens</strong></td>
-          <td><span class="badge badge-medium">BEPERKT</span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-low"></span></td>
-          <td><span class="dot dot-medium"></span></td>
           <td><span class="dot dot-low"></span></td>
         </tr>
         <tr>
@@ -287,18 +287,59 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
     </div>
   </div>
 
+  <!-- Berkvens -->
+  <div class="competitor-card">
+    <div class="comp-header" onclick="toggle(this)">
+      <span class="comp-name">Berkvens</span>
+      <div class="comp-meta">
+        <span class="badge badge-high">ACTIEF</span>
+        <span class="item-count">2 berichten</span>
+        <span class="chevron">&#9660;</span>
+      </div>
+    </div>
+    <div class="comp-body">
+      <div class="themes-grid">
+        <div class="theme-box t-comm">
+          <div class="theme-label">Commercieel</div>
+          <div class="news-item">
+            <a class="news-title" href="https://berkvens.nl/blog" target="_blank" rel="noopener">Berkvens in de familie: Patrick &amp; Roy werken samen bij Berkvens</a>
+            <div class="news-meta">Berkvens.nl &middot; 3 juni 2026</div>
+            <div class="news-summary">Berkvens Deursystemen publiceert een nieuw verhaal in de reeks &ldquo;Berkvens, het zit in de familie&rdquo;. Ditmaal over Patrick en Roy, die allebei bij Berkvens werken. De reeks benadrukt de familiaire bedrijfscultuur en persoonlijke binding van de ruim 500 medewerkers aan het bedrijf. De human-interest content versterkt de werkgeversmerk en herkenbaarheid van Berkvens als werkplek in de regio Someren.</div>
+          </div>
+        </div>
+        <div class="theme-box t-duur">
+          <div class="theme-label">Duurzaamheid</div>
+          <div class="news-item">
+            <a class="news-title" href="https://info.berkvens.nl/over-ons/nieuws" target="_blank" rel="noopener">Groen in beweging: bijen en biodiversiteit op het terrein van Berkvens</a>
+            <div class="news-meta">Berkvens.nl &middot; 4 juni 2026</div>
+            <div class="news-summary">Berkvens Deursystemen deelt een update over de bijenkolonies op hun bedrijfsterrein in Someren, als onderdeel van de jaarlijkse &ldquo;Groen in beweging&rdquo;-reeks. De bijen dragen dagelijks bij aan bestuiving, biodiversiteit en een gezonde leefomgeving. De post valt samen met de Week van de Bij (31 mei&ndash;7 juni 2026), een Europees initiatief dat aandacht vraagt voor bijensterfte en groene bedrijfsvoering. Berkvens benadrukt dat duurzaamheid structureel onderdeel is van hun productie- en vestigingsbeleid.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Weekamp -->
   <div class="competitor-card">
     <div class="comp-header" onclick="toggle(this)">
       <span class="comp-name">Weekamp</span>
       <div class="comp-meta">
-        <span class="badge badge-low">STIL</span>
-        <span class="item-count">0 berichten</span>
+        <span class="badge badge-medium">BEPERKT</span>
+        <span class="item-count">1 bericht</span>
         <span class="chevron">&#9660;</span>
       </div>
     </div>
     <div class="comp-body">
-      <p class="no-news">Geen bevestigde publicaties gevonden in de periode 1&ndash;7 juni 2026.</p>
+      <div class="themes-grid">
+        <div class="theme-box t-prod">
+          <div class="theme-label">Productontwikkeling</div>
+          <div class="news-item">
+            <a class="news-title" href="https://www.bouwpartnerlempens.nl/blogs/nieuw-de-binnendeurseries-van-weekamp/" target="_blank" rel="noopener">Weekamp herindeling binnendeurassortiment in herkenbare series</a>
+            <div class="news-meta">Bouwpartner Lempens &middot; 1 juni 2026</div>
+            <div class="news-summary">Weekamp Deuren heeft het binnendeurassortiment opnieuw ingedeeld in overzichtelijke, herkenbare series op basis van opbouw, prijsklasse en design. De herindeling maakt het voor installateurs en dealers eenvoudiger om gericht een keuze te maken. Het binnendeurboek telt nu zeven duidelijk onderscheiden series. De nieuwe structuur is zichtbaar in het prijzenboek 2026 en via het dealerportaal.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -314,30 +355,6 @@ footer { text-align: center; padding: 22px; font-size: 0.75rem; color: #94a3b8; 
     </div>
     <div class="comp-body">
       <p class="no-news">Geen bevestigde publicaties gevonden in de periode 1&ndash;7 juni 2026.</p>
-    </div>
-  </div>
-
-  <!-- Berkvens -->
-  <div class="competitor-card">
-    <div class="comp-header" onclick="toggle(this)">
-      <span class="comp-name">Berkvens</span>
-      <div class="comp-meta">
-        <span class="badge badge-medium">BEPERKT</span>
-        <span class="item-count">1 bericht</span>
-        <span class="chevron">&#9660;</span>
-      </div>
-    </div>
-    <div class="comp-body">
-      <div class="themes-grid">
-        <div class="theme-box t-duur">
-          <div class="theme-label">Duurzaamheid</div>
-          <div class="news-item">
-            <a class="news-title" href="https://info.berkvens.nl/over-ons/nieuws" target="_blank" rel="noopener">Groen in beweging: bijen en biodiversiteit op het terrein van Berkvens</a>
-            <div class="news-meta">Berkvens.nl &middot; 4 juni 2026</div>
-            <div class="news-summary">Berkvens Deursystemen deelt een update over de bijenkolonies op hun bedrijfsterrein in Someren, als onderdeel van de jaarlijkse &ldquo;Groen in beweging&rdquo;-reeks. De bijen dragen dagelijks bij aan bestuiving, biodiversiteit en een gezonde leefomgeving. De post valt samen met de Week van de Bij (31 mei&ndash;7 juni 2026), een Europees initiatief dat aandacht vraagt voor bijensterfte en groene bedrijfsvoering. Berkvens benadrukt dat duurzaamheid structureel onderdeel is van hun productie- en vestigingsbeleid.</div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
